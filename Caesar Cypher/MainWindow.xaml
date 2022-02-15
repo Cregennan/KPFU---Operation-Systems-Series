@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Caesar_Cypher"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Icon="/favicon-32x32.png"
         Title="Шифратор Цезаря" Height="550" Width="800" Background="{x:Null}" fw:PointerTracker.Enabled="True">
     <Grid Margin="0,0,0,0">

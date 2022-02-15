@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Icon="/favicon-32x32.png"
         x:Name="ResultsWindow"
+        ResizeMode="NoResize"
         Title="ResultWindow" Height="443" Width="500" Background="{x:Null}">
     <Grid>
         <Grid.RowDefinitions>
