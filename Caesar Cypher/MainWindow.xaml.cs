@@ -1,6 +1,7 @@
 ﻿using SourceChord.FluentWPF;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -56,7 +57,7 @@ namespace Caesar_Cypher
             }
 
             var index = AlphabetComboBox.SelectedIndex;
-            String RawText = MainText.Text;
+            String RawText = MainText.Text.ToLower();
             Regex CurrentAlhpabetRegex = Service.AlphabetRegices[index];
             String CurrentAlphabet = Service.Alphabets[index];
             int CurrentAlphabetLength = CurrentAlphabet.Length;
@@ -67,13 +68,38 @@ namespace Caesar_Cypher
             ////Убираем пустое место
             //FilteredText = Regex.Replace(RawText.ToLower(), @"\s+", "");
             ////Убираем неалфавитные символы
-            String FilteredText = CurrentAlhpabetRegex.Replace(Regex.Replace(RawText.ToLower(), @"\s+", ""), String.Empty);
+            ///
+            String FilteredText = CurrentAlhpabetRegex.Replace(Regex.Replace(RawText, @"\s+", ""), String.Empty);
 
+            if ((bool)ForeignAlphabetCheckBox.IsChecked)
+            {
+                bool ru = false;
+                bool en = false;
+                foreach (var l in RawText)
+                {
+                    if (!ru && l >= 'а' && l <= 'я')
+                    {
+                        ru = true;
+                    }
+                    if (!en && l >= 'a' && l <= 'z')
+                    {
+                        en = true;
+                    }
+                    if (en && ru)
+                    {
+                        MessageBox.Show(this, "В тексте обнаружены символы обоих алфавитов. Выключите проверку, или исправьте текст.", "Ошибка");
+                        return;
+                    }
+                }
+            }
+            
+            Debug.WriteLine(RawText);
             if (FilteredText.Length == 0)
             {
                 MessageBox.Show(this, "В заданном тексте нет символов выбранного алфавита", "Ошибка");
                 return;
             }
+            
 
 
 

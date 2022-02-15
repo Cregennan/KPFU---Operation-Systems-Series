@@ -40,6 +40,10 @@ namespace Caesar_Cypher
             "абвгдеёжзийклмнопрстуфхцчшщъыьэюя0123456789",
             "abcdefghijklmnopqrstuvwxyz0123456789"
         };
-    
+        public static readonly Regex RussianLetters = new Regex(@"^[а-я]+$");
+        public static readonly Regex EnglishLetters = new Regex(@"^[a-z]+$");
+
+
+
     }
 }

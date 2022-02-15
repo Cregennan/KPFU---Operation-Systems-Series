@@ -18,8 +18,9 @@
         <Label Content="Операция" HorizontalAlignment="Left" Margin="400,193,0,0" VerticalAlignment="Top" Foreground="White"/>
         <ComboBox x:Name="AlphabetComboBox" Style="{StaticResource ComboBoxRevealStyle}"  HorizontalAlignment="Left" Margin="400,307,0,0" VerticalAlignment="Top" Width="221" Height="38"/>
         <Label Content="Алфавит" HorizontalAlignment="Left" Margin="400,276,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <TextBlock HorizontalAlignment="Left" Margin="36,480,0,0" TextWrapping="Wrap" Text="При шифровании (дешифровании) текста, будут учитываться только цифры и символы из выбранного алфавита." VerticalAlignment="Top" Foreground="White"/>
-        <Button x:Name="LaunchButton" Style="{StaticResource ButtonRevealStyle}" Content="Зашифровать" HorizontalAlignment="Left" Margin="36,417,0,0" VerticalAlignment="Top" Height="32" Width="114" Click="LaunchButton_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="36,480,0,0" TextWrapping="Wrap" Text="При шифровании (дешифровании) текста, запятые, пробелы и любые другие знаки будут отфильтрованы автоматически" VerticalAlignment="Top" Foreground="White"/>
+        <Button x:Name="LaunchButton" Style="{StaticResource ButtonRevealStyle}" Content="Зашифровать" HorizontalAlignment="Left" Margin="36,432,0,0" VerticalAlignment="Top" Height="32" Width="114" Click="LaunchButton_Click"/>
+        <CheckBox IsChecked="True" x:Name="ForeignAlphabetCheckBox" Content="Принимать буквы только выбранного алфавита" HorizontalAlignment="Left" Margin="36,398,0,0" VerticalAlignment="Top" Foreground="White"/>
 
     </Grid>
 
