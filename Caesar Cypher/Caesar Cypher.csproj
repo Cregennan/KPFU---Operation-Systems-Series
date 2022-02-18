@@ -113,5 +113,8 @@
   <ItemGroup>
     <Resource Include="favicon-32x32.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="breakme.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

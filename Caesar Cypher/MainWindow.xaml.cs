@@ -45,12 +45,13 @@ namespace Caesar_Cypher
         {
             if (OldValue.Length == 0)
             {
-                if ((bool)CheckEmptyShiftValue.IsChecked)
+                if (!(bool)CheckEmptyShiftValue.IsChecked)
                 {
                     return (true, "Поле для сдвига не может быть пустым", OldValue);
                 }
                 else
                 {
+                    ShiftValueField.Text = "0";
                     return (false, "Всё норм", "0");
                 }
             }
@@ -105,7 +106,7 @@ namespace Caesar_Cypher
             }
 
 
-            int ModdedShiftValue = (int)(BigInteger.Parse(ShiftValueField.Text) % CurrentAlphabetLength);
+            int ModdedShiftValue = (int)(BigInteger.Parse(RawShiftValue) % CurrentAlphabetLength);
             int RealShiftValue = OperationComboBox.SelectedIndex == 0 ? ModdedShiftValue : CurrentAlphabetLength - ModdedShiftValue;
             ResultTextBox.Text = Service.Encrypt(FilteredText, RealShiftValue, CurrentAlphabet);
         }
@@ -129,7 +130,15 @@ namespace Caesar_Cypher
             }
             else
             {
-                e.Handled = !(new Regex(@"^[0-9]+$")).IsMatch(e.Text);
+                if(((TextBox)sender).CaretIndex == 0 && ((TextBox)sender).Text.Contains("-"))
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    e.Handled = !(new Regex(@"^[0-9]+$")).IsMatch(e.Text);
+                }
+               
             }
         }
 
@@ -144,10 +153,15 @@ namespace Caesar_Cypher
                 if (Text.Contains("-") && text.Contains("-"))
                 {
                     e.CancelCommand();
+                    return;
                 }
-
                 if (tb.CaretIndex == 0)
                 {
+                    if (Text.Contains("-"))
+                    {
+                        e.CancelCommand();
+                        return;
+                    }
                     if (text == "-")
                     {
                         //Можно
