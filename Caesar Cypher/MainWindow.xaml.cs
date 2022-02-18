@@ -107,7 +107,19 @@ namespace Caesar_Cypher
 
 
             int ModdedShiftValue = (int)(BigInteger.Parse(RawShiftValue) % CurrentAlphabetLength);
-            int RealShiftValue = OperationComboBox.SelectedIndex == 0 ? ModdedShiftValue : CurrentAlphabetLength - ModdedShiftValue;
+
+            int RealShiftValue = 0;
+            if (ModdedShiftValue >= 0)
+            {
+                RealShiftValue = OperationComboBox.SelectedIndex == 0 ? ModdedShiftValue : CurrentAlphabetLength - ModdedShiftValue;
+            }
+            else
+            {
+                RealShiftValue = OperationComboBox.SelectedIndex == 0 ? CurrentAlphabetLength + ModdedShiftValue : - ModdedShiftValue;
+            }
+
+                
+            
             ResultTextBox.Text = Service.Encrypt(FilteredText, RealShiftValue, CurrentAlphabet);
         }
 

@@ -8,7 +8,10 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Icon="/favicon-32x32.png"
-        Title="Шифратор Цезаря" Height="718" Width="1014" Background="{x:Null}" fw:PointerTracker.Enabled="True">
+        Title="Шифратор Цезаря" Height="718" Width="1014" fw:PointerTracker.Enabled="True">
+    <fw:AcrylicWindow.Background>
+        <ImageBrush ImageSource="/breakme.png" TileMode="None" Stretch="UniformToFill"/>
+    </fw:AcrylicWindow.Background>
     <Grid Margin="0,0,0,-6">
         <TextBox DataObject.Pasting="MainText_Pasting" PreviewTextInput="MainText_PreviewTextInput" x:Name="MainText" Style="{StaticResource TextBoxRevealStyle}" AcceptsReturn="True" AcceptsTab="True" HorizontalAlignment="Left" Margin="36,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="302" Height="227"/>
         <Label x:Name="OperationLabel" Content="Текст для шифрования" HorizontalAlignment="Left" Margin="36,111,0,0" VerticalAlignment="Top" Foreground="White"/>
