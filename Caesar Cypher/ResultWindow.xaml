@@ -10,13 +10,5 @@
         x:Name="ResultsWindow"
         ResizeMode="NoResize"
         Title="ResultWindow" Height="443" Width="500" Background="{x:Null}">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="41*"/>
-            <RowDefinition Height="386*"/>
-        </Grid.RowDefinitions>
-        <Image Source="/caesar.jpg" Stretch="Fill" Margin="0,0,0,126" Grid.RowSpan="2"/>
-        <TextBox x:Name="MainTextBox"  Style="{StaticResource TextBoxRevealStyle}" IsReadOnly="True" HorizontalAlignment="Center" Margin="0,250,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="500" Height="136" Grid.Row="1"/>
-
-    </Grid>
+    <WebBrowser Height="443"  Width="500"  x:Name="page"></WebBrowser>
 </fw:AcrylicWindow>

@@ -8,20 +8,22 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Icon="/favicon-32x32.png"
-        Title="Шифратор Цезаря" Height="550" Width="800" Background="{x:Null}" fw:PointerTracker.Enabled="True">
-    <Grid Margin="0,0,0,0">
-        <TextBox x:Name="MainText" Style="{StaticResource TextBoxRevealStyle}" AcceptsReturn="True" AcceptsTab="True" HorizontalAlignment="Left" Margin="36,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="302" Height="227"/>
+        Title="Шифратор Цезаря" Height="718" Width="1014" Background="{x:Null}" fw:PointerTracker.Enabled="True">
+    <Grid Margin="0,0,0,-6">
+        <TextBox DataObject.Pasting="MainText_Pasting" PreviewTextInput="MainText_PreviewTextInput" x:Name="MainText" Style="{StaticResource TextBoxRevealStyle}" AcceptsReturn="True" AcceptsTab="True" HorizontalAlignment="Left" Margin="36,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="302" Height="227"/>
         <Label x:Name="OperationLabel" Content="Текст для шифрования" HorizontalAlignment="Left" Margin="36,111,0,0" VerticalAlignment="Top" Foreground="White"/>
         <TextBlock HorizontalAlignment="Left" Margin="36,44,0,0" TextWrapping="Wrap" Text="Шифратор Цезаря" VerticalAlignment="Top" FontSize="24" Foreground="White"/>
-        <TextBox Style="{StaticResource TextBoxRevealStyle}" x:Name="ShiftValueField" HorizontalAlignment="Left" Margin="400,142,0,0" Text=""  VerticalAlignment="Top" Width="221" Height="34"/>
-        <Label Content="Число сдвига" HorizontalAlignment="Left" Margin="400,111,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <ComboBox SelectionChanged="OperationComboBox_SelectionChanged" x:Name="OperationComboBox" Style="{StaticResource ComboBoxRevealStyle}"  HorizontalAlignment="Left" Margin="400,224,0,0" VerticalAlignment="Top" Width="221" Height="38"/>
-        <Label Content="Операция" HorizontalAlignment="Left" Margin="400,193,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <ComboBox x:Name="AlphabetComboBox" Style="{StaticResource ComboBoxRevealStyle}"  HorizontalAlignment="Left" Margin="400,307,0,0" VerticalAlignment="Top" Width="221" Height="38"/>
-        <Label Content="Алфавит" HorizontalAlignment="Left" Margin="400,276,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <TextBlock HorizontalAlignment="Left" Margin="36,480,0,0" TextWrapping="Wrap" Text="При шифровании (дешифровании) текста, запятые, пробелы и любые другие знаки будут отфильтрованы автоматически" VerticalAlignment="Top" Foreground="White"/>
-        <Button x:Name="LaunchButton" Style="{StaticResource ButtonRevealStyle}" Content="Зашифровать" HorizontalAlignment="Left" Margin="36,432,0,0" VerticalAlignment="Top" Height="32" Width="114" Click="LaunchButton_Click"/>
-        <CheckBox IsChecked="True" x:Name="ForeignAlphabetCheckBox" Content="Принимать буквы только выбранного алфавита" HorizontalAlignment="Left" Margin="36,398,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox PreviewKeyDown="ShiftValueField_PreviewKeyDown" Style="{StaticResource TextBoxRevealStyle}" DataObject.Pasting="ShiftValueField_Pasting" PreviewTextInput="ShiftValueField_PreviewTextInput" x:Name="ShiftValueField" HorizontalAlignment="Left" Margin="36,414,0,0" Text=""  VerticalAlignment="Top" Width="221" Height="34"/>
+        <Label Content="Число сдвига" HorizontalAlignment="Left" Margin="36,383,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <ComboBox SelectionChanged="OperationComboBox_SelectionChanged" x:Name="OperationComboBox" Style="{StaticResource ComboBoxRevealStyle}"  HorizontalAlignment="Left" Margin="36,512,0,0" VerticalAlignment="Top" Width="221" Height="38"/>
+        <Label Content="Операция" HorizontalAlignment="Left" Margin="36,481,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <ComboBox SelectionChanged="AlphabetComboBox_SelectionChanged" x:Name="AlphabetComboBox" Style="{StaticResource ComboBoxRevealStyle}"  HorizontalAlignment="Left" Margin="36,601,0,0" VerticalAlignment="Top" Width="221" Height="38"/>
+        <Label Content="Алфавит" HorizontalAlignment="Left" Margin="36,567,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="436,513,0,0" TextWrapping="Wrap" Text="При шифровании (дешифровании) текста, запятые, пробелы и любые другие знаки будут отфильтрованы автоматически" VerticalAlignment="Top" Foreground="White" Width="330"/>
+        <Button x:Name="LaunchButton" Style="{StaticResource ButtonRevealStyle}" Content="Зашифровать" HorizontalAlignment="Left" Margin="436,585,0,0" VerticalAlignment="Top" Height="32" Width="114" Click="LaunchButton_Click"/>
+        <TextBox IsReadOnly="True" Style="{StaticResource TextBoxRevealStyle}" x:Name="ResultTextBox" HorizontalAlignment="Left" Margin="436,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="313" Height="227"/>
+        <Label Content="Результат" HorizontalAlignment="Left" Margin="436,111,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox x:Name="CheckEmptyShiftValue" Content="Считать пустой ключ за 0" HorizontalAlignment="Left" Margin="36,453,0,0" VerticalAlignment="Top" Foreground="White"/>
 
     </Grid>
 
