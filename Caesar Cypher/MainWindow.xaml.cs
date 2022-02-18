@@ -54,10 +54,12 @@ namespace Caesar_Cypher
                     return (false, "Всё норм", "0");
                 }
             }
-            else
+            if (OldValue == "-")
             {
-                return (false, "Всё норм", OldValue);
+                return (true, "Поле сдвига содержит только минус, возможно вы хотели ввести отрицательное число", OldValue);
             }
+
+            return (false, "Всё норм", OldValue);
         }
 
         public (bool, String) CheckMainText(String Text)
@@ -78,6 +80,8 @@ namespace Caesar_Cypher
 
         private void LaunchButton_Click(object sender, RoutedEventArgs e)
         {
+
+
             (bool ShiftValueStatus, String Message, String RawShiftValue) = CheckShiftValue(ShiftValueField.Text);
             if (ShiftValueStatus)
             {
@@ -133,20 +137,33 @@ namespace Caesar_Cypher
         {
             if (e.DataObject.GetDataPresent(typeof(String)))
             {
-                String TextBoxText = ((TextBox)sender).Text;
+                TextBox tb = (TextBox)sender;
+                String Text = ((TextBox)sender).Text;
                 String text = (String)e.DataObject.GetData(typeof(String));
-                if (TextBoxText.Contains("-") && text.Contains("-"))
+                
+                if (Text.Contains("-") && text.Contains("-"))
                 {
                     e.CancelCommand();
                 }
-                if(!(TextBoxText.Length == 0)  && text.Contains("-"))
+
+                if (tb.CaretIndex == 0)
                 {
-                    if (!(new Regex(@"^-?\d+$")).IsMatch(text))
+                    if (text == "-")
+                    {
+                        //Можно
+                    }
+                    else if (!(new Regex(@"^-?[0-9]+$")).IsMatch(text))
                     {
                         e.CancelCommand();
                     }
                 }
-                
+                else
+                {
+                    if (!(new Regex(@"^[0-9]+$")).IsMatch(text))
+                    {
+                        e.CancelCommand();
+                    }
+                }                
             }
             else
             {
