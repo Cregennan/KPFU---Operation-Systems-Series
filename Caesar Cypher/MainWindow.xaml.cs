@@ -59,6 +59,10 @@ namespace Caesar_Cypher
             {
                 return (true, "Поле сдвига содержит только минус, возможно вы хотели ввести отрицательное число", OldValue);
             }
+            if (!(new Regex(@"^-?[0-9]+$")).IsMatch(OldValue))
+            {
+                return (true, "Ошибка в поле сдвига", OldValue);
+            }
 
             return (false, "Всё норм", OldValue);
         }
@@ -81,8 +85,7 @@ namespace Caesar_Cypher
 
         private void LaunchButton_Click(object sender, RoutedEventArgs e)
         {
-
-
+            
             (bool ShiftValueStatus, String Message, String RawShiftValue) = CheckShiftValue(ShiftValueField.Text);
             if (ShiftValueStatus)
             {
@@ -121,10 +124,30 @@ namespace Caesar_Cypher
                 
             
             ResultTextBox.Text = Service.Encrypt(FilteredText, RealShiftValue, CurrentAlphabet);
+
         }
 
         private void ShiftValueField_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
+           TextBox tb = (TextBox)sender;
+
+            if (tb.SelectionLength > 0)
+            {
+                if(tb.SelectionStart == 0)
+                {
+                    if(e.Text == "-")
+                    {
+                        e.Handled = false;
+                        return;
+                    }
+                    else
+                    {
+                        e.Handled = !(new Regex(@"^[0-9]+$")).IsMatch(e.Text);
+                        return;
+                    }
+                    
+                }
+            }
             if (e.Text == "-")
             {
                 if (((TextBox)sender).Text.Length == 0)
@@ -161,8 +184,37 @@ namespace Caesar_Cypher
                 TextBox tb = (TextBox)sender;
                 String Text = ((TextBox)sender).Text;
                 String text = (String)e.DataObject.GetData(typeof(String));
-                
-                
+
+                if (tb.SelectionLength > 0)
+                {
+                    if (tb.SelectionStart == 0)
+                    {
+                        if (text == "-")
+                        {
+                            return;
+                        }
+                        if (tb.Text.Contains("-"))
+                        {
+                            if (!(new Regex(@"^-?[0-9]+$")).IsMatch(text))
+                            {
+                                e.CancelCommand();
+                                return;
+                            }
+                            else
+                            {
+                                return;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (!(new Regex(@"^[0-9]+$")).IsMatch(text))
+                        {
+                            e.CancelCommand();
+                            return;
+                        }
+                    }
+                }
                 if (Text.Contains("-") && text.Contains("-"))
                 {
                     e.CancelCommand();
