@@ -187,7 +187,7 @@ namespace Caesar_Cypher
 
                 if (tb.SelectionLength > 0)
                 {
-                    if (tb.SelectionStart == 0)
+                    if (tb.SelectionStart == 0) 
                     {
                         if (text == "-")
                         {
