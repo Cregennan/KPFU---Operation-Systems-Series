@@ -162,6 +162,7 @@ namespace Caesar_Cypher
                 String Text = ((TextBox)sender).Text;
                 String text = (String)e.DataObject.GetData(typeof(String));
                 
+                
                 if (Text.Contains("-") && text.Contains("-"))
                 {
                     e.CancelCommand();
@@ -177,6 +178,7 @@ namespace Caesar_Cypher
                     if (text == "-")
                     {
                         //Можно
+                        return;
                     }
                     else if (!(new Regex(@"^-?[0-9]+$")).IsMatch(text))
                     {
