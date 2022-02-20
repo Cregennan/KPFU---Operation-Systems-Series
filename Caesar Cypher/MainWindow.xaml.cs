@@ -39,6 +39,7 @@ namespace Caesar_Cypher
                 AlphabetComboBox.Items.Add(s);
             }
             AlphabetComboBox.SelectedIndex = 0;
+            ClearOut.Click += (object k, RoutedEventArgs t) => ResultTextBox.Clear();
         }
         
         public (bool, String, String) CheckShiftValue(String OldValue)
@@ -85,46 +86,51 @@ namespace Caesar_Cypher
 
         private void LaunchButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            (bool ShiftValueStatus, String Message, String RawShiftValue) = CheckShiftValue(ShiftValueField.Text);
-            if (ShiftValueStatus)
+            try
             {
-                MessageBox.Show(this, Message, "Ошибка");
-                return;
-            }
+                (bool ShiftValueStatus, String Message, String RawShiftValue) = CheckShiftValue(ShiftValueField.Text);
+                if (ShiftValueStatus)
+                {
+                    MessageBox.Show(this, Message, "Ошибка");
+                    return;
+                }
 
 
 
-            Regex CurrentAlhpabetRegex = Service.FilterRegices[AlphabetComboBox.SelectedIndex];
-            String CurrentAlphabet = Service.Alphabets[AlphabetComboBox.SelectedIndex];
-            int CurrentAlphabetLength = CurrentAlphabet.Length;
-            String FilteredText = CurrentAlhpabetRegex.Replace(Regex.Replace(MainText.Text.ToLower(), @"\s+", ""), String.Empty);
+                Regex CurrentAlhpabetRegex = Service.FilterRegices[AlphabetComboBox.SelectedIndex];
+                String CurrentAlphabet = Service.Alphabets[AlphabetComboBox.SelectedIndex];
+                int CurrentAlphabetLength = CurrentAlphabet.Length;
+                String FilteredText = CurrentAlhpabetRegex.Replace(Regex.Replace(MainText.Text.ToLower(), @"\s+", ""), String.Empty);
 
 
-            (bool TextStatus, String Message1) = CheckMainText(FilteredText);
-            if (TextStatus)
+                (bool TextStatus, String Message1) = CheckMainText(FilteredText);
+                if (TextStatus)
+                {
+                    MessageBox.Show(this, Message1, "Ошибка");
+                    return;
+                }
+
+
+                int ModdedShiftValue = (int)(BigInteger.Parse(RawShiftValue) % CurrentAlphabetLength);
+                Debug.WriteLine("Подсчет ключа завершен");
+
+                int RealShiftValue = 0;
+                if (ModdedShiftValue >= 0)
+                {
+                    RealShiftValue = OperationComboBox.SelectedIndex == 0 ? ModdedShiftValue : CurrentAlphabetLength - ModdedShiftValue;
+                }
+                else
+                {
+                    RealShiftValue = OperationComboBox.SelectedIndex == 0 ? CurrentAlphabetLength + ModdedShiftValue : -ModdedShiftValue;
+                }
+
+
+
+                ResultTextBox.Text = Service.Encrypt(FilteredText, RealShiftValue, CurrentAlphabet);
+            }catch(Exception ex)
             {
-                MessageBox.Show(this, Message1, "Ошибка");
-                return;
+                MessageBox.Show(this, "Ошибка в данных, перепроверьте введенную информацию", "Ошибка");
             }
-
-
-            int ModdedShiftValue = (int)(BigInteger.Parse(RawShiftValue) % CurrentAlphabetLength);
-
-            int RealShiftValue = 0;
-            if (ModdedShiftValue >= 0)
-            {
-                RealShiftValue = OperationComboBox.SelectedIndex == 0 ? ModdedShiftValue : CurrentAlphabetLength - ModdedShiftValue;
-            }
-            else
-            {
-                RealShiftValue = OperationComboBox.SelectedIndex == 0 ? CurrentAlphabetLength + ModdedShiftValue : - ModdedShiftValue;
-            }
-
-                
-            
-            ResultTextBox.Text = Service.Encrypt(FilteredText, RealShiftValue, CurrentAlphabet);
-
         }
 
         private void ShiftValueField_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -146,7 +152,7 @@ namespace Caesar_Cypher
                         return;
                     }
                     
-                }
+                }   
             }
             if (e.Text == "-")
             {

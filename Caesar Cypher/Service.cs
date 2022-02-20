@@ -38,9 +38,9 @@ namespace Caesar_Cypher
              new Regex("[^a-z0-9]")
         };
         public static readonly Regex[] TextAllowed = {
-            new Regex(@"^[a-zA-Z0-9 \n\r.,\-\+=()*:;]+$"),
-            new Regex(@"^[а-яА-Я0-9 \n\r.`,-]+$")
-    };
+            new Regex(@"^[A-Za-z0-9 \n\r.`,\!\?\-\+=()*:;{}—]+$"),
+            new Regex(@"^[а-яА-я0-9ёЁ \!\?\n\r.`,\!\?\-\+=()*:;{}—]+$")
+        };
 
 
         public static readonly String[] Alphabets =

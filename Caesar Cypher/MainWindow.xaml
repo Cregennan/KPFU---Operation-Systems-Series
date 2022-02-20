@@ -27,6 +27,7 @@
         <TextBox IsReadOnly="True" Style="{StaticResource TextBoxRevealStyle}" x:Name="ResultTextBox" HorizontalAlignment="Left" Margin="436,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="313" Height="227"/>
         <Label Content="Результат" HorizontalAlignment="Left" Margin="436,111,0,0" VerticalAlignment="Top" Foreground="White"/>
         <CheckBox x:Name="CheckEmptyShiftValue" Content="Считать пустой ключ за 0" HorizontalAlignment="Left" Margin="36,453,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Button x:Name="ClearOut" Style="{StaticResource ButtonRevealStyle}" Content="Очистить  поле вывода" HorizontalAlignment="Left" Margin="592,388,0,0" VerticalAlignment="Top" Height="32" Width="156"/>
 
     </Grid>
 
