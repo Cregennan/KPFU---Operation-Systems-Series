@@ -1,0 +1,30 @@
+﻿<fw:AcrylicWindow x:Class="CoolerGamma.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gamma"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        mc:Ignorable="d"
+        Title="Гаммирование" Height="450" Width="800">
+    <fw:AcrylicWindow.Background>
+        <ImageBrush ImageSource="/back.png"/>
+    </fw:AcrylicWindow.Background>
+    <Grid>
+        <TextBox Style="{StaticResource TextBoxRevealStyle}"  x:Name="SourceTextBox" AcceptsReturn="True" AcceptsTab="True" HorizontalAlignment="Left" Margin="27,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="209" Height="183"/>
+        <Label x:Name="SourceTextLabel" Content="Текст для шифрования" HorizontalAlignment="Left" Margin="27,22,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox PreviewKeyDown="KeyTextBox_PreviewKeyDown" ToolTip="Длина ключа превышает длину текста. Лишнее будет проигнорировано" TextChanged="KeyTextBox_TextChanged" PreviewTextInput="KeyTextBox_PreviewTextInput"  Style="{StaticResource TextBoxRevealStyle}"  x:Name="KeyTextBox"  HorizontalAlignment="Left" Margin="265,210,0,0" Text="" VerticalAlignment="Top" Width="161"/>
+        <Label x:Name="KeyLabel" Content="Ключ шифрования" HorizontalAlignment="Left" Margin="265,179,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <ComboBox Style="{StaticResource ComboBoxRevealStyle}"  x:Name="OperationComboBox" HorizontalAlignment="Left" Margin="265,143,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Действие" HorizontalAlignment="Left" Margin="265,115,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox Style="{StaticResource TextBoxRevealStyle}"  IsReadOnly="True" x:Name="ResultTextBox" HorizontalAlignment="Left" Margin="561,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="210" Height="183"/>
+        <Label x:Name="OperationResultLabel" Content="Результат" HorizontalAlignment="Left" Margin="561,22,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Button Style="{StaticResource ButtonAccentRevealStyle}" x:Name="Start" Content="Зашифровать" HorizontalAlignment="Left" Margin="27,248,0,0" VerticalAlignment="Top" Width="120" Height="28" Click="Start_Click" />
+        <Button Style="{StaticResource ButtonAccentRevealStyle}" x:Name="ClearOutput" Content="Очистить" HorizontalAlignment="Left" Margin="710,262,0,0" VerticalAlignment="Top" Height="25" Width="70" />
+        <ComboBox SelectionChanged="KeyType_SelectionChanged" x:Name="KeyType" Style="{StaticResource ComboBoxRevealStyle}" HorizontalAlignment="Left" Margin="266,75,0,0" VerticalAlignment="Top" Width="160" RenderTransformOrigin="0.495,0.977"/>
+        <Label Content="Тип ключа" HorizontalAlignment="Left" Margin="268,48,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="KeyTypeLabel" Content="Определитель типа ключа" HorizontalAlignment="Left" Margin="266,243,0,0" VerticalAlignment="Top" Foreground="#FF7D7878"/>
+        <Button x:Name="RandomKey" Click="RandomKey_Click"  Style="{StaticResource ButtonAccentRevealStyle}" Content="Случайный ключ" HorizontalAlignment="Left" Margin="431,211,0,0" VerticalAlignment="Top" Width="120" Height="30"/>
+
+    </Grid>
+</fw:AcrylicWindow>

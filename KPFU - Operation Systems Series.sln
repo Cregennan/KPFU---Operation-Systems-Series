@@ -5,6 +5,12 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caesar Cypher", "Caesar Cypher\Caesar Cypher.csproj", "{4C124D24-BDF5-4864-A4CA-0E04A059FDC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vigeneer", "Vigeneer\Vigeneer.csproj", "{DF1417CA-F955-4953-B8C1-A6C389DB95F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cooler Gamma", "CoolerGamma\Cooler Gamma.csproj", "{4C7823DC-A73E-451A-A626-E6B3E5ACE453}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamma", "Gamma\Gamma.csproj", "{84E988D8-4867-4349-85E9-84EF17A19635}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{4C124D24-BDF5-4864-A4CA-0E04A059FDC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C124D24-BDF5-4864-A4CA-0E04A059FDC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C124D24-BDF5-4864-A4CA-0E04A059FDC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF1417CA-F955-4953-B8C1-A6C389DB95F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF1417CA-F955-4953-B8C1-A6C389DB95F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF1417CA-F955-4953-B8C1-A6C389DB95F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF1417CA-F955-4953-B8C1-A6C389DB95F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C7823DC-A73E-451A-A626-E6B3E5ACE453}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C7823DC-A73E-451A-A626-E6B3E5ACE453}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C7823DC-A73E-451A-A626-E6B3E5ACE453}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C7823DC-A73E-451A-A626-E6B3E5ACE453}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84E988D8-4867-4349-85E9-84EF17A19635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84E988D8-4867-4349-85E9-84EF17A19635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84E988D8-4867-4349-85E9-84EF17A19635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84E988D8-4867-4349-85E9-84EF17A19635}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

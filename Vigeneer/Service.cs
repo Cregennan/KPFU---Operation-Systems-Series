@@ -7,13 +7,13 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Caesar_Cypher
+namespace Vigeneer
 {
     public class Service
     {
         public static readonly String[] OperationLabelStates = {
-            "Текст для шифрования (регистр не учитывается)",
-            "Текст для дешифрования (регистр не учитывается)"
+            "Текст для шифрования",
+            "Текст для дешифрования"
         };
         public static readonly String[] Operations = {
             "Шифрование",
@@ -37,43 +37,30 @@ namespace Caesar_Cypher
              new Regex("[^а-я0-9ё]"),
              new Regex("[^a-z0-9]")
         };
-        public static readonly Regex[] TextAllowed = {
-            new Regex(@"^[A-Za-z0-9 \n\r.`,\!\?\-\+=()*:;{}—]+$"),
-            new Regex(@"^[а-яА-я0-9ёЁ \!\?\n\r.`,\!\?\-\+=()*:;{}—]+$")
+        public static readonly Regex[] ShiftRegices =
+        {
+             new Regex("[а-я0-9ё]"),
+             new Regex("[a-z0-9]")
         };
+        public static readonly Regex[] TextAllowed = {
+            new Regex(@"^[а-яА-я0-9ёЁ \!\?\n\r.`,\!\?\-\+=()*:;{}—]+$"),
+            new Regex(@"^[A-Za-z0-9 \n\r.`,\!\?\-\+=()*:;{}—]+$")
+        };
+
 
 
         public static readonly String[] Alphabets =
         {
             "абвгдеёжзийклмнопрстуфхцчшщъыьэюя0123456789",
-            "abcdefghijklmnopqrstuvwxyz0123456789"
+            "abcdefghijklmnopqrstuvwxyz0123456789",
+
         };
         public static readonly Regex RussianLetters = new Regex(@"^[а-яё]+$");
         public static readonly Regex EnglishLetters = new Regex(@"^[a-z]+$");
 
-        public static String Encrypt(String text, int shift, String alphabet) => text.Select(c => alphabet[(alphabet.IndexOf(c) + shift) % alphabet.Length]).Aggregate("", (x, y) => x + y);
-
-        public static bool CheckBothAlphabets(String text)
+        public static String Encrypt(String text, String shift, String alphabet, bool type)
         {
-            bool ru = false;
-            bool en = false;
-            foreach (var l in text)
-            {
-                if (!ru && l >= 'а' && l <= 'я')
-                {
-                    ru = true;
-                }
-                if (!en && l >= 'a' && l <= 'z')
-                {
-                    en = true;
-                }
-                if (en && ru)
-                {
-
-                    return false;
-                }
-            }
-            return true;
+            return text.Select((c,i) => alphabet[(alphabet.IndexOf(text[i]) + (type ? alphabet.IndexOf(shift[i]) : alphabet.Length - alphabet.IndexOf(shift[i]))  ) % alphabet.Length]).Aggregate("", (x, y) => x + y);
         }
 
 

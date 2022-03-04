@@ -1,0 +1,25 @@
+﻿<fw:AcrylicWindow x:Class="Vigeneer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vigeneer"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        mc:Ignorable="d"
+        Title="Шифратор Виженера" Height="370" Width="766" Background="{x:Null}" fw:PointerTracker.Enabled="True">
+    <Grid>
+        <TextBox Style="{StaticResource TextBoxRevealStyle}" PreviewTextInput="SourceTextBox_PreviewTextInput" DataObject.Pasting="SourceTextBox_Pasting" x:Name="SourceTextBox" AcceptsReturn="True" AcceptsTab="True" HorizontalAlignment="Left" Margin="27,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="209" Height="183"/>
+        <Label x:Name="SourceTextLabel" Content="Текст для шифрования" HorizontalAlignment="Left" Margin="27,22,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox  Style="{StaticResource TextBoxRevealStyle}" PreviewKeyDown="KeyTextBox_PreviewKeyDown" x:Name="KeyTextBox" PreviewTextInput="KeyTextBox_PreviewTextInput" DataObject.Pasting="KeyTextBox_Pasting" HorizontalAlignment="Left" Margin="261,48,0,0" Text="" VerticalAlignment="Top" Width="161"/>
+        <Label x:Name="KeyLabel" Content="Ключ шифрования" HorizontalAlignment="Left" Margin="261,22,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <ComboBox Style="{StaticResource ComboBoxRevealStyle}" SelectionChanged="OperationComboBox_SelectionChanged" x:Name="OperationComboBox" HorizontalAlignment="Left" Margin="261,113,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Действие" HorizontalAlignment="Left" Margin="261,87,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox Style="{StaticResource TextBoxRevealStyle}" MouseDoubleClick="ResultTextBox_MouseDoubleClick" IsReadOnly="True" x:Name="ResultTextBox" HorizontalAlignment="Left" Margin="501,58,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="210" Height="183"/>
+        <Label x:Name="OperationResultLabel" Content="Результат" HorizontalAlignment="Left" Margin="501,22,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Button Style="{StaticResource ButtonAccentRevealStyle}" x:Name="Start" Content="Зашифровать" HorizontalAlignment="Left" Margin="27,248,0,0" VerticalAlignment="Top" Width="120" Height="28" Click="Start_Click"/>
+        <Button Style="{StaticResource ButtonAccentRevealStyle}" x:Name="ClearOutput" Content="Очистить" HorizontalAlignment="Left" Margin="501,251,0,0" VerticalAlignment="Top" Height="25" Width="70" Click="ClearOutput_Click"/>
+        <ComboBox Style="{StaticResource ComboBoxRevealStyle}" SelectionChanged="AlphabetComboBox_SelectionChanged" x:Name="AlphabetComboBox" HorizontalAlignment="Left" Margin="261,185,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Алфавит" HorizontalAlignment="Left" Margin="261,159,0,0" VerticalAlignment="Top" Foreground="White" />
+
+    </Grid>
+</fw:AcrylicWindow>
