@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Vigeneer
 {
@@ -23,9 +13,9 @@ namespace Vigeneer
     {
         public static String Multiply(String source, int count)
         {
-            String res = ""; 
-            for(int i = 0; i < count; i++)
-                res += source; 
+            String res = "";
+            for (int i = 0; i < count; i++)
+                res += source;
             return res;
         }
         public (bool, String) CheckText(String Text)
@@ -155,12 +145,13 @@ namespace Vigeneer
                 String Result = Service.Encrypt(FilteredText, PreparedKey, CurrentAlphabet, OperationComboBox.SelectedIndex == 0);
 
                 ResultTextBox.Text = Result;
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(this, "Проверьте правильность заполнения полей", "Ошибка");
                 return;
             }
-            
+
 
         }
 
@@ -168,7 +159,7 @@ namespace Vigeneer
         {
             if (e.Key == Key.Space)
             {
-                e.Handled=true;
+                e.Handled = true;
             }
         }
 

@@ -1,21 +1,10 @@
-﻿using SourceChord.FluentWPF;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Numerics;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Caesar_Cypher
 {
@@ -41,7 +30,7 @@ namespace Caesar_Cypher
             AlphabetComboBox.SelectedIndex = 0;
             ClearOut.Click += (object k, RoutedEventArgs t) => ResultTextBox.Clear();
         }
-        
+
         public (bool, String, String) CheckShiftValue(String OldValue)
         {
             if (OldValue.Length == 0)
@@ -81,7 +70,7 @@ namespace Caesar_Cypher
             var index = OperationComboBox.SelectedIndex;
             OperationLabel.Content = Service.OperationLabelStates[index];
             LaunchButton.Content = Service.ButtonStates[index];
-           
+
         }
 
         private void LaunchButton_Click(object sender, RoutedEventArgs e)
@@ -127,7 +116,8 @@ namespace Caesar_Cypher
 
 
                 ResultTextBox.Text = Service.Encrypt(FilteredText, RealShiftValue, CurrentAlphabet);
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(this, "Ошибка в данных, перепроверьте введенную информацию", "Ошибка");
             }
@@ -135,13 +125,13 @@ namespace Caesar_Cypher
 
         private void ShiftValueField_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-           TextBox tb = (TextBox)sender;
+            TextBox tb = (TextBox)sender;
 
             if (tb.SelectionLength > 0)
             {
-                if(tb.SelectionStart == 0)
+                if (tb.SelectionStart == 0)
                 {
-                    if(e.Text == "-")
+                    if (e.Text == "-")
                     {
                         e.Handled = false;
                         return;
@@ -151,8 +141,8 @@ namespace Caesar_Cypher
                         e.Handled = !(new Regex(@"^[0-9]+$")).IsMatch(e.Text);
                         return;
                     }
-                    
-                }   
+
+                }
             }
             if (e.Text == "-")
             {
@@ -163,15 +153,16 @@ namespace Caesar_Cypher
                 else
                 {
                     if (!((TextBox)sender).Text.Contains("-") && ((TextBox)sender).CaretIndex == 0)
-                    {                   
+                    {
                         e.Handled = false;
-                    }else
-                    e.Handled = true;
+                    }
+                    else
+                        e.Handled = true;
                 }
             }
             else
             {
-                if(((TextBox)sender).CaretIndex == 0 && ((TextBox)sender).Text.Contains("-"))
+                if (((TextBox)sender).CaretIndex == 0 && ((TextBox)sender).Text.Contains("-"))
                 {
                     e.Handled = true;
                 }
@@ -179,7 +170,7 @@ namespace Caesar_Cypher
                 {
                     e.Handled = !(new Regex(@"^[0-9]+$")).IsMatch(e.Text);
                 }
-               
+
             }
         }
 
@@ -193,7 +184,7 @@ namespace Caesar_Cypher
 
                 if (tb.SelectionLength > 0)
                 {
-                    if (tb.SelectionStart == 0) 
+                    if (tb.SelectionStart == 0)
                     {
                         if (text == "-")
                         {
@@ -249,7 +240,7 @@ namespace Caesar_Cypher
                     {
                         e.CancelCommand();
                     }
-                }                
+                }
             }
             else
             {

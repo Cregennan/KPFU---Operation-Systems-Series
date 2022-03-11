@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace Gamma
 {
     public static class Service
     {
-        public static class Colors{
+        public static class Colors
+        {
 
             public static Brush GetColor(String hex) => new SolidColorBrush((Color)ColorConverter.ConvertFromString(hex));
 
@@ -50,11 +49,18 @@ namespace Gamma
             "Псевдослучайная гамма"
         };
         public static readonly Regex OnlyNumbers = new Regex("^[0-9]+$");
+
         public static readonly Regex[] FilterRegices =
         {
              new Regex("[^а-я0-9ё] "),
              new Regex("[^a-z0-9] ")
         };
+        public static readonly Regex[] KeyRegices =
+        {
+             new Regex("[^А-яа-я0-9ёЁ ]+$"),
+             new Regex("[^A-Za-z0-9 ]+$")
+        };
+
         public static readonly Regex[] TextAllowed = {
             new Regex(@"^[A-Za-z0-9 \n\r.`,\!\?\-\+=()*:;{}—]+$"),
             new Regex(@"^[а-яА-я0-9ёЁ \!\?\n\r.`,\!\?\-\+=()*:;{}—]+$")
@@ -70,6 +76,21 @@ namespace Gamma
 
         public static int[] DecodeKey(this String text) => Regex.Matches(text, @".{1,8}").Cast<Match>().Select(x => Convert.ToInt32(x.Value, 2)).ToArray();
 
+        public static List<int> DecodeKey1(String text)
+        {
+            List<int> vs = new List<int>();
+
+            var t = Regex.Matches(text, @".{1,8}");
+
+
+
+            foreach (Match m in t)
+            {
+                vs.Add(Convert.ToInt32(m.Value, 2));
+            }
+            return vs;
+        }
+
 
         //public static String Filter(this String text, int alphabet) => FilterRegices[alphabet].Replace(Regex.Replace(text.ToLower(), @"\s+", ""), String.Empty);
         public static String Filter(this String text, int alphabet) => FilterRegices[alphabet].Replace(text.ToLower().Replace("\n", "").Replace("\r", ""), String.Empty);
@@ -82,18 +103,35 @@ namespace Gamma
             int c = 0;
             while (c < l / 2)
             {
-                int pos = random.Next(0, l );
+                int pos = random.Next(0, l);
                 if (result[pos] == '0')
                 {
                     result[pos] = '1';
                     c++;
                 }
             }
-            return result.Aggregate("", (x,y) => x + y);
+            return result.Aggregate("", (x, y) => x + y);
         }
 
-        public static String ToBinary(this byte number) => Convert.ToString(number, 2).PadLeft(8, '0');
-  
+        public static String ToBinary(this byte number)
+        {
+            return Convert.ToString(number, 2).PadLeft(8, '0');
+        }
+
+        public static String Stack(this String text, int length)
+        {
+            String res = "";
+            int count = length / text.Length + 1;
+
+            for (int i = 0; i < count; i++)
+                res += text;
+
+            return res.Cut(length);
+
+        }
+        public static String Cut(this String text, int length) => text.Substring(0, length);
+
+
         public static String[] ToBinary(this byte[] array) => array.Select(x => x.ToBinary()).ToArray();
 
         public static byte[] ToBytes(this int[] array) => array.Select(x => (byte)x).ToArray();
@@ -110,6 +148,6 @@ namespace Gamma
         public static readonly Regex RussianLetters = new Regex(@"^[а-яё]+$");
         public static readonly Regex EnglishLetters = new Regex(@"^[a-z]+$");
 
-      
+
     }
 }

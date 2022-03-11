@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace Caesar_Cypher
 {
@@ -27,7 +22,7 @@ namespace Caesar_Cypher
             "Зашифровать",
             "Расшифровать"
         };
-        public static readonly String[] ResultWindowTitles = { 
+        public static readonly String[] ResultWindowTitles = {
             "Результат шифрования",
             "Результат дешифрования"
         };

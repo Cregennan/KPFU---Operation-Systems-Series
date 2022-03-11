@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace Vigeneer
 {
@@ -27,7 +22,7 @@ namespace Vigeneer
             "Зашифровать",
             "Расшифровать"
         };
-        public static readonly String[] ResultWindowTitles = { 
+        public static readonly String[] ResultWindowTitles = {
             "Результат шифрования",
             "Результат дешифрования"
         };
@@ -60,7 +55,7 @@ namespace Vigeneer
 
         public static String Encrypt(String text, String shift, String alphabet, bool type)
         {
-            return text.Select((c,i) => alphabet[(alphabet.IndexOf(text[i]) + (type ? alphabet.IndexOf(shift[i]) : alphabet.Length - alphabet.IndexOf(shift[i]))  ) % alphabet.Length]).Aggregate("", (x, y) => x + y);
+            return text.Select((c, i) => alphabet[(alphabet.IndexOf(text[i]) + (type ? alphabet.IndexOf(shift[i]) : alphabet.Length - alphabet.IndexOf(shift[i]))) % alphabet.Length]).Aggregate("", (x, y) => x + y);
         }
 
 

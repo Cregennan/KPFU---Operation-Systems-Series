@@ -14,10 +14,10 @@
         <TextBox TextChanged="MainText_TextChanged" DataObject.Pasting="MainText_Pasting" PreviewTextInput="MainText_PreviewTextInput" x:Name="MainText" Style="{StaticResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="36,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="221" Height="177"/>
         <Label x:Name="OperationLabel" Content="Текст для шифрования" HorizontalAlignment="Left" Margin="36,111,0,0" VerticalAlignment="Top" Foreground="White"/>
         <TextBlock HorizontalAlignment="Left" Margin="36,44,0,0" TextWrapping="Wrap" Text="Гаммирование" VerticalAlignment="Top" FontSize="24" Foreground="White"/>
-        <TextBox PreviewKeyDown="ShiftValueField_PreviewKeyDown"  TextChanged="ShiftValueField_TextChanged" Style="{StaticResource TextBoxRevealStyle}" DataObject.Pasting="ShiftValueField_Pasting" PreviewTextInput="ShiftValueField_PreviewTextInput" x:Name="ShiftValueField" HorizontalAlignment="Left" Margin="36,388,0,0" Text=""  VerticalAlignment="Top" Width="221" Height="34" SelectionBrush="Black"/>
-        <Label Content="Ключ шифрования" HorizontalAlignment="Left" Margin="36,357,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <ComboBox SelectionChanged="AlphabetComboBox_SelectionChanged" x:Name="AlphabetComboBox" Style="{StaticResource ComboBoxRevealStyle}"  HorizontalAlignment="Left" Margin="36,473,0,0" VerticalAlignment="Top" Width="221" Height="38"/>
-        <Label Content="Алфавит" HorizontalAlignment="Left" Margin="36,442,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox IsReadOnly="True"  TextChanged="ShiftValueField_TextChanged" Style="{StaticResource TextBoxRevealStyle}" x:Name="ShiftValueField" HorizontalAlignment="Left" Margin="37,482,0,0" Text=""  VerticalAlignment="Top" Width="221" Height="34" SelectionBrush="Black"/>
+        <Label Content="Двоичный ключ" HorizontalAlignment="Left" Margin="37,451,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <ComboBox SelectionChanged="AlphabetComboBox_SelectionChanged" x:Name="AlphabetComboBox" Style="{StaticResource ComboBoxRevealStyle}"  HorizontalAlignment="Left" Margin="37,552,0,0" VerticalAlignment="Top" Width="221" Height="38"/>
+        <Label Content="Алфавит" HorizontalAlignment="Left" Margin="37,521,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Button x:Name="EncryptButton" Style="{StaticResource ButtonRevealStyle}" Content="Зашифровать" HorizontalAlignment="Left" Margin="642,390,0,0" VerticalAlignment="Top" Height="32" Width="114" Click="EncryptButton_Click"/>
         <TextBox IsReadOnly="True" Style="{StaticResource TextBoxRevealStyle}" x:Name="BinaryRepresentation" HorizontalAlignment="Left" Margin="282,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="234" Height="177"/>
         <Label Content="Двоичное представление текста&#xD;&#xA;" HorizontalAlignment="Left" Margin="282,111,0,0" VerticalAlignment="Top" Foreground="White"/>
@@ -26,8 +26,10 @@
         <TextBox IsReadOnly="True" Style="{StaticResource TextBoxRevealStyle}" x:Name="DecodedText" HorizontalAlignment="Left" Margin="799,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="234" Height="177"/>
         <Label Content="Расшифрованный текст" HorizontalAlignment="Left" Margin="799,111,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Button Click="DecryptButton_Click" x:Name="DecryptButton" Style="{StaticResource ButtonRevealStyle}" Content="Расшифровать" HorizontalAlignment="Left" Margin="799,390,0,0" VerticalAlignment="Top" Height="32" Width="108" />
-        <ComboBox SelectionChanged="KeyType_SelectionChanged" x:Name="KeyType" Style="{StaticResource ComboBoxRevealStyle}" HorizontalAlignment="Left" Margin="37,553,0,0" VerticalAlignment="Top" Width="221" Height="37"/>
-        <Label Content="Тип ключа" HorizontalAlignment="Left" Margin="37,522,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <ComboBox SelectionChanged="KeyType_SelectionChanged" x:Name="KeyType" Style="{StaticResource ComboBoxRevealStyle}" HorizontalAlignment="Left" Margin="37,626,0,0" VerticalAlignment="Top" Width="221" Height="37"/>
+        <Label Content="Тип ключа" HorizontalAlignment="Left" Margin="37,595,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Button  x:Name="Generate" IsEnabled="False" Style="{StaticResource ButtonRevealStyle}" Content="Сгенерировать" HorizontalAlignment="Left" Margin="282,388,0,0" VerticalAlignment="Top" Height="32" Width="124" Click="Generate_Click"/>
+        <TextBox  AcceptsReturn="False" AcceptsTab="False" TextChanged="ManualKey_TextChanged" PreviewTextInput="ShiftValueField_PreviewTextInput" DataObject.Pasting="ShiftValueField_Pasting" PreviewKeyDown="ShiftValueField_PreviewKeyDown"  x:Name="ManualKey" Style="{StaticResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="37,406,0,0" Text="" VerticalAlignment="Top" Width="220"/>
+        <Label Content="Ключ" HorizontalAlignment="Left" Margin="37,375,0,0" VerticalAlignment="Top" Foreground="White"/>
     </Grid>
 </fw:AcrylicWindow>

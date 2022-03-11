@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace CoolerGamma
 {
     public static class Service
     {
-        public enum KeyTypes {
+        public enum KeyTypes
+        {
             AUTO = 0,
             BINARY = 1,
             HEX = 2,
@@ -43,7 +41,7 @@ namespace CoolerGamma
             String result = "";
             for (int i = 0; i < textbytes.Length; i++)
             {
-                result+= (char)(byte)((int)textbytes[i] ^ (int)keybytes[i]);
+                result += (char)(byte)((int)textbytes[i] ^ (int)keybytes[i]);
             }
             return result;
         }
@@ -77,14 +75,15 @@ namespace CoolerGamma
                     return type;
             }
         }
-        public static bool isValueBinary(String t){
-            foreach(char c in t)
+        public static bool isValueBinary(String t)
+        {
+            foreach (char c in t)
             {
                 if (c != '0' && c != '1')
                 {
                     return false;
                 }
-                
+
             }
             return true;
 
@@ -102,21 +101,22 @@ namespace CoolerGamma
         }
         private static byte[] ConvertKeyFromHex(this String hex)
         {
-                if (hex.Length % 2 == 1)
-                    throw new Exception("Ключ не может иметь нечетное количество знаков");
+            if (hex.Length % 2 == 1)
+                throw new Exception("Ключ не может иметь нечетное количество знаков");
 
-                byte[] arr = new byte[hex.Length >> 1];
+            byte[] arr = new byte[hex.Length >> 1];
 
-                for (int i = 0; i < hex.Length >> 1; ++i)
-                {
-                    arr[i] = (byte)((GetHexVal(hex[i << 1]) << 4) + (GetHexVal(hex[(i << 1) + 1])));
-                }
+            for (int i = 0; i < hex.Length >> 1; ++i)
+            {
+                arr[i] = (byte)((GetHexVal(hex[i << 1]) << 4) + (GetHexVal(hex[(i << 1) + 1])));
+            }
 
-                return arr; 
+            return arr;
         }
         private static int GetHexVal(char hex) => (int)hex - ((int)hex < 58 ? 48 : ((int)hex < 97 ? 55 : 87));
-        
-        public static byte[] ConvertKeyTo(String t, KeyTypes type) {
+
+        public static byte[] ConvertKeyTo(String t, KeyTypes type)
+        {
             switch (type)
             {
                 case KeyTypes.BINARY:
@@ -140,14 +140,14 @@ namespace CoolerGamma
         public static int[] ConvertToInts(this String t)
         {
             int[] s = new int[t.Length];
-            for(int i = 0; i < t.Length; i++)
+            for (int i = 0; i < t.Length; i++)
             {
                 s[i] = (int)t[i];
 
             }
             return s;
         }
-        public static String ToHexString(this byte[] t) => BitConverter.ToString(t).Replace("-","");
+        public static String ToHexString(this byte[] t) => BitConverter.ToString(t).Replace("-", "");
 
         public static String GenerateKey(String text, KeyTypes type)
         {
@@ -176,7 +176,8 @@ namespace CoolerGamma
             }
         }
 
-        public class Colors{
+        public class Colors
+        {
             public static readonly SolidColorBrush Transparent = GetColor("#00000000");
             public static readonly SolidColorBrush DefaultDetectedKeyType = GetColor("#FF7D7878");
         }
@@ -220,7 +221,7 @@ namespace CoolerGamma
         public static SolidColorBrush GetColor(String hex)
         {
             return (SolidColorBrush)new BrushConverter().ConvertFrom(hex);
-        } 
+        }
 
 
     }

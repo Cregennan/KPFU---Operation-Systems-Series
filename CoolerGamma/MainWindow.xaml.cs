@@ -1,21 +1,9 @@
 ﻿using System;
-using Gamma;
-using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CoolerGamma
 {
@@ -25,7 +13,8 @@ namespace CoolerGamma
 
         private bool ValidateKeyInput(String t)
         {
-            switch (SelectedKeyType) {
+            switch (SelectedKeyType)
+            {
                 case Service.KeyTypes.AUTO:
                     return Service.isValueHex(t);
                 case Service.KeyTypes.BINARY:
@@ -37,14 +26,16 @@ namespace CoolerGamma
             }
         }
 
-        public Service.KeyTypes Detect { get
+        public Service.KeyTypes Detect
+        {
+            get
             {
                 return Service.DetectKeyType(SourceTextBox.Text, KeyTextBox.Text, SelectedKeyType);
             }
             private set { }
         }
-        
-        
+
+
 
         private (String, Brush) GetCurrentLabelState(String source, String key)
         {
@@ -65,7 +56,7 @@ namespace CoolerGamma
             {
                 return ("", Service.Colors.Transparent);
             }
-            
+
         }
         private void UpdateLabelState(String source, String key)
         {
@@ -78,12 +69,12 @@ namespace CoolerGamma
         {
             InitializeComponent();
             ClearOutput.Click += (object sender, RoutedEventArgs e) => ResultTextBox.Clear();
-            
+
             foreach (var t in Service.Operations)
             {
                 OperationComboBox.Items.Add(t);
             }
-            foreach(var t in Service.KeyTypeDescriptions)
+            foreach (var t in Service.KeyTypeDescriptions)
             {
                 KeyType.Items.Add(t);
             }
@@ -93,11 +84,11 @@ namespace CoolerGamma
             OperationComboBox.SelectedIndex = 0;
 
             //Debug.WriteLine("Ты гей".ConvertToBytes().ToHexString()); 
-            foreach(var t in "Ты гей")
+            foreach (var t in "Ты гей")
             {
                 Debug.WriteLine(((byte)t));
             }
-            foreach(byte t in "Ты гей".ConvertToInts())
+            foreach (byte t in "Ты гей".ConvertToInts())
             {
                 Debug.WriteLine(t);
             }
@@ -113,7 +104,7 @@ namespace CoolerGamma
             if (type == Service.KeyTypes.HEX)
             {
                 bool state = key.Length == text.Length * 2;
-                return (state, state ? "Всё ок": "Каждой букве текста должно соответствовать двухзначное шестадцатеричное число");
+                return (state, state ? "Всё ок" : "Каждой букве текста должно соответствовать двухзначное шестадцатеричное число");
             }
             return (false, "Ошибка в ключе");
         }
@@ -134,7 +125,7 @@ namespace CoolerGamma
         {
             e.Handled = !ValidateKeyInput(e.Text);
         }
-        
+
         private void KeyTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             UpdateLabelState(SourceTextBox.Text, KeyTextBox.Text);
@@ -171,7 +162,7 @@ namespace CoolerGamma
 
         private void RandomKey_Click(object sender, RoutedEventArgs e)
         {
-            KeyTextBox.Text = Service.GenerateKey(SourceTextBox.Text, SelectedKeyType);    
+            KeyTextBox.Text = Service.GenerateKey(SourceTextBox.Text, SelectedKeyType);
         }
     }
 }
