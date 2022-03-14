@@ -8,15 +8,15 @@
         fw:PointerTracker.Enabled="True"
         mc:Ignorable="d"
                   ResizeMode="NoResize"
-        Title="MainWindow" Height="332" Width="456" Background="#00000000">
+        Title="MainWindow" Height="435" Width="758" Background="#00000000">
     <Grid Background="{x:Null}">
-        <TextBox  x:Name="LowerBound" Style="{StaticResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="39,116,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
-        <Label Content="Нижняя граница" HorizontalAlignment="Left" Margin="39,90,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <TextBlock HorizontalAlignment="Left" Margin="39,48,0,0" TextWrapping="Wrap" Text="Решето Эратосфена" VerticalAlignment="Top" FontSize="24" Foreground="White"/>
-        <TextBox x:Name="HigherBound" Style="{StaticResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="39,185,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
-        <Label Content="Верхняя граница" HorizontalAlignment="Left" Margin="39,159,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Button Style="{StaticResource ButtonRevealStyle}" Content="Сгенерировать" HorizontalAlignment="Left" Margin="39,248,0,0" VerticalAlignment="Top" Width="110" Height="26" Click="Button_Click"/>
-        <Button Style="{StaticResource ButtonAccentRevealStyle}" IsEnabled="False"  Content="Получить простое число" HorizontalAlignment="Left" Margin="221,248,0,0" VerticalAlignment="Top" Height="26" Width="162"/>
+        <TextBox  x:Name="LowerBound" Style="{StaticResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="39,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="176" Height="38"/>
+        <Label Content="Нижняя граница" HorizontalAlignment="Left" Margin="39,115,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="39,48,0,0" TextWrapping="Wrap" Text="Решето Эратосфена" VerticalAlignment="Top" FontSize="30" Foreground="White"/>
+        <TextBox x:Name="HigherBound" Style="{StaticResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="39,218,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="176" Height="38"/>
+        <Label Content="Верхняя граница" HorizontalAlignment="Left" Margin="39,192,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Button Style="{StaticResource ButtonRevealStyle}" Content="Сгенерировать" HorizontalAlignment="Left" Margin="39,287,0,0" VerticalAlignment="Top" Width="137" Height="36" Click="Button_Click"/>
+        <TextBox IsReadOnly="True" Style="{StaticResource TextBoxRevealStyle}" x:Name="Result" HorizontalAlignment="Left" Margin="360,90,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="334" Height="256"/>
 
 
 

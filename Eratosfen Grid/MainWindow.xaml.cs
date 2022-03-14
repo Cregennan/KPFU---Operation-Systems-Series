@@ -25,8 +25,8 @@ namespace Eratosfen_Grid
         public MainWindow()
         {
             InitializeComponent();
-            HigherBound.PreviewTextInput += (s, e) => Service.NumberField_PreviewTextInput(s, e);
-            LowerBound.PreviewTextInput += (s, e) => Service.NumberField_PreviewTextInput(s, e);
+            HigherBound.PreviewTextInput += Service.NumberField_PreviewTextInput;
+            LowerBound.PreviewTextInput += Service.NumberField_PreviewTextInput;
             DataObject.AddPastingHandler(HigherBound, Service.NumberField_Pasting);
             DataObject.AddPastingHandler(LowerBound, Service.NumberField_Pasting);
         }
@@ -35,11 +35,13 @@ namespace Eratosfen_Grid
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //if (LowerBound.Text.Length > 6 || HigherBound.Text.Length > 6)
-            //{
-            //    MessageBox.Show(this, "Ошибка", "Введено слишком большое число. Возможно переполнение памяти");
-            //    return;
-            //}
+
+            if (LowerBound.Text.Length > 9 || HigherBound.Text.Length > 9)
+            {
+                MessageBox.Show(this,  "Введено слишком большое число. Возможно переполнение памяти", "Ошибка");
+                return;
+            }
+            Result.Clear();
             int lower = Int32.Parse(LowerBound.Text);
             int higher = Int32.Parse(HigherBound.Text);
             if (lower > higher)
@@ -61,8 +63,9 @@ namespace Eratosfen_Grid
             }
             gen.Stop();
             Stopwatch comp = Stopwatch.StartNew();
+            
 
-            for (int i = 2; i <= Math.Sqrt(A.Length - 1); i++)
+            for (int i = 2; i <= Math.Sqrt(A.Length - 1); i++   )
             {
                 if (A[i])
                 {
@@ -75,13 +78,18 @@ namespace Eratosfen_Grid
                 }
             }
 
+
             comp.Stop();
 
             Debug.WriteLine("Время генерации: " + gen.Elapsed.TotalMilliseconds + " мс");
             Debug.WriteLine("Время вычислений: " + comp.Elapsed.TotalMilliseconds + " мс");
             Debug.WriteLine("Количество: " + higher);
 
-            A.AllFile(lower);
+            Stopwatch sw = Stopwatch.StartNew();
+            Result.Text = A.AllFile(lower);
+            sw.Stop();
+            Debug.WriteLine("Втыкание в текстовое поле: " + sw.Elapsed.TotalMilliseconds + " мс");
+            Debug.WriteLine("");
         }
 
 

@@ -18,39 +18,27 @@ namespace Eratosfen_Grid
         {
             return (i % 2 != 0 || i == 2) && (i % 3 != 0 || i == 3) && (i % 5 != 0 || i == 5);
         }
-        public static String All(this bool[] ts, int lower)
+        public static String AllFile(this bool[] ts, int lower)
         {
-            StringBuilder sb = new StringBuilder();    
-            for (int i = 2; i < ts.Length; i++)
-            {
-                if (ts[i] && i > lower)
+
+            using (StreamWriter file = new StreamWriter("Result.txt", false)){
+                for (int i = lower; i < ts.Length; i++)
                 {
-                   sb.Append(i);
-                   sb.Append(" ");
+                    if (ts[i])
+                    {
+                        file.Write(i);
+                        file.Write(" ");
+                    }
                 }
+                file.Close();
             }
-            return sb.ToString();
-        }
-        public static void AllFile(this bool[] ts, int lower)
-        {
-            StreamWriter file = new StreamWriter("Result.txt", false);
-            for (int i = lower; i < ts.Length; i++)
-            {
-                if (ts[i])
-                {
-                    file.WriteLine(i);
-                }
-            }
-            file.Close();
-            Process.Start("Result.txt");
+           
+            StreamReader input = new StreamReader("Result.txt");
+            String t = input.ReadToEnd();
+            input.Close();
+            return t;
         }
 
-
-
-        public static String Alls(this bool[] ts, int lower)
-        {
-            return String.Join(", ", ts.Select( (x, i) => (x && i >= lower) ? i.ToString() : "").Where(x => x != ""));
-        }
 
         public static void NumberField_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
