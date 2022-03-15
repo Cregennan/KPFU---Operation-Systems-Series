@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,39 @@ namespace Atkin_Sieve
         public MainWindow()
         {
             InitializeComponent();
+            Number.PreviewTextInput += Service.NumberField_PreviewTextInput;
+            DataObject.AddPastingHandler(Number, Service.NumberField_Pasting);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int N = 0;
+                if (Number.Text.Length == 0)
+                {
+                    MessageBox.Show(this, "Ошибка в числе", "Ошибка");
+                    return;
+                }
+                N = Int32.Parse(Number.Text);
+                if (N < 2) throw new Exception();
+
+                Stopwatch generator = Stopwatch.StartNew();
+                BitArray b = Service.GetPrimesUpTo(N);
+                generator.Stop();
+                Debug.WriteLine("Время вычисления: " + generator.Elapsed.TotalMilliseconds);
+
+                Stopwatch output = Stopwatch.StartNew();
+                Result.Text = b.AllFile(2);
+                output.Stop();
+                Debug.WriteLine("Время вывода: " + output.Elapsed.TotalMilliseconds);
+
+            }catch (Exception ex)
+            {
+                MessageBox.Show(this, "Ошибка в числе", "Ошибка");
+                return;
+            }
+            
         }
     }
 }

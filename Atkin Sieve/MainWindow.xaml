@@ -8,6 +8,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Background="{x:Null}">
     <Grid>
-        
+        <TextBox x:Name="Number" Style="{StaticResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="27,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168"/>
+        <Label Content="Максимальное число"  HorizontalAlignment="Left" Margin="27,89,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="Result" Style="{StaticResource TextBoxRevealStyle}" IsReadOnly="True" HorizontalAlignment="Left" Margin="334,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="297" Height="281"/>
+        <Button Style="{StaticResource ButtonAccentRevealStyle}" Content="Вычислить" HorizontalAlignment="Left" Margin="27,0,0,0" VerticalAlignment="Center" Height="33" Width="97" Click="Button_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="27,38,0,0" TextWrapping="Wrap" Text="Решето Аткина" VerticalAlignment="Top" FontSize="30" Foreground="White"/>
+        <Label Content="Результат" HorizontalAlignment="Left" Margin="334,89,0,0" VerticalAlignment="Top" Foreground="White"/>
+
     </Grid>
 </fw:AcrylicWindow>
