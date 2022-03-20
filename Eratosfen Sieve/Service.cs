@@ -10,7 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace Eratosfen_Grid
+namespace Eratosfen_Sieve
 {
     public static class Service
     {

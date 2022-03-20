@@ -1,7 +1,7 @@
-﻿<Application x:Class="Eratosfen_Grid.App"
+﻿<Application x:Class="Eratosfen_Sieve.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Eratosfen_Grid"
+             xmlns:local="clr-namespace:Eratosfen_Sieve"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>

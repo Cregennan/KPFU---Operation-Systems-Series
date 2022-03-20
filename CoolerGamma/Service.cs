@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Media;
 
+
 namespace CoolerGamma
 {
     public static class Service
@@ -16,6 +17,7 @@ namespace CoolerGamma
             UNDEFINED = 3,
         }
 
+        
         public static String Cypher(String text, String key, KeyTypes type)
         {
             byte[] keybytes = Service.ConvertKeyTo(key, type);

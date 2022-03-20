@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Eratosfen_Grid
+namespace Eratosfen_Sieve
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml

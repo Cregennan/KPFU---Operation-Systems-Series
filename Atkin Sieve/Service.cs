@@ -39,46 +39,49 @@ namespace Atkin_Sieve
             return t;
         }
 
-        public static BitArray GetPrimesUpTo(int limit)
+        public static BitArray GetPrimesUpTo(int granitsa)
         {
-            var sieve = new BitArray(limit + 1);
+
+            var sieve = new BitArray(granitsa + 1);
             // Предварительное просеивание
-            for (long x2 = 1, dx2 = 3; x2 < limit; x2 += dx2, dx2 += 2)
-                for (long y2 = 1, dy2 = 3, n; y2 < limit; y2 += dy2, dy2 += 2)
+            for (long x2 = 1, dx2 = 3; x2 < granitsa; x2 += dx2, dx2 += 2)
+                for (long y2 = 1, dy2 = 3, n; y2 < granitsa; y2 += dy2, dy2 += 2)
                 {
                     // n = 4x2 + y2
                     n = (x2 << 2) + y2;
-                    if (n <= limit && (n % 12 == 1 || n % 12 == 5))
+                    if (n <= granitsa && (n % 12 == 1 || n % 12 == 5))
                         sieve[(int)n] ^= true;
                     // n = 3x2 + y2
                     n -= x2;
-                    if (n <= limit && n % 12 == 7)
+                    if (n <= granitsa && n % 12 == 7)
                         sieve[(int)n] ^= true;
                     // n = 3x2 - y2
                     if (x2 > y2)
                     {
                         n -= y2 << 1;
-                        if (n <= limit && n % 12 == 1)
+                        if (n <= granitsa && n % 12 == 1)
                             sieve[(int)n] ^= true;
                     }
                 }
-            
-
-
-            int r = 5;
-            for (long r2 = r * r, dr2 = (r << 1) + 1; r2 < limit; ++r, r2 += dr2, dr2 += 2)
+                        int r = 5;
+            for (long r2 = r * r, dr2 = (r << 1) + 1; r2 < granitsa; ++r, r2 += dr2, dr2 += 2)
                 if (sieve[r])
-                    for (long mr2 = r2; mr2 < limit; mr2 += r2)
+                    for (long mr2 = r2; mr2 < granitsa; mr2 += r2)
                         sieve[(int)mr2] = false;
 
 
             // Числа 2 и 3 — заведомо простые
-            if (limit > 2)
+            if (granitsa > 2)
                 sieve[2] = true;
-            if (limit > 3)
+            if (granitsa > 3)
                 sieve[3] = true;
             return sieve;
         }
+
+        
+
+
+
 
         public static void NumberField_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
