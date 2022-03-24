@@ -33,13 +33,13 @@ namespace Atkin_Sieve
         {
             try
             {
-                long N = 0;
+                int N = 0;
                 if (Number.Text.Length == 0)
                 {
                     MessageBox.Show(this, "Ошибка в числе", "Ошибка");
                     return;
                 }
-                N = long.Parse(Number.Text);
+                N = Int32.Parse(Number.Text);
                 if (N < 2) throw new Exception();
 
                 Stopwatch generator = Stopwatch.StartNew();

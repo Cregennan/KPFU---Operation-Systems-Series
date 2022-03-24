@@ -13,8 +13,8 @@
         </Grid.ColumnDefinitions>
         <Label Foreground="{DynamicResource	SystemBaseHighColorBrush}" Content="Число для проверки" HorizontalAlignment="Left" Margin="60,124,0,0" VerticalAlignment="Top"/>
         <TextBlock Foreground="{DynamicResource	SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="60,73,0,0" TextWrapping="Wrap" Text="Тест Миллера-Рабина" VerticalAlignment="Top" FontSize="24" Width="330"/>
-        <TextBox  x:Name="Number" Style="{StaticResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="63,155,0,0"  Text="" VerticalAlignment="Top" Width="193"/>
-        <TextBox x:Name="Rounds" Style="{StaticResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="63,243,0,0"  Text="" VerticalAlignment="Top" Width="193"/>
+        <TextBox  x:Name="Number" Style="{DynamicResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="63,155,0,0"  Text="" VerticalAlignment="Top" Width="193"/>
+        <TextBox x:Name="Rounds" Style="{DynamicResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="63,243,0,0"  Text="" VerticalAlignment="Top" Width="193"/>
         <Label Foreground="{DynamicResource	SystemBaseHighColorBrush}" Content="Количество раундов алгоритма" HorizontalAlignment="Left" Margin="63,212,0,0" VerticalAlignment="Top"/>
         <Button Style="{DynamicResource ButtonAccentRevealStyle}" Content="Определить" HorizontalAlignment="Left" Margin="63,332,0,0" VerticalAlignment="Top" Height="35" Width="106" Click="Button_Click"/>
         <!--<TextBlock Foreground="{DynamicResource	SystemBaseHighColorBrush}" x:Name="Status" HorizontalAlignment="Left" Margin="425,171,0,0" TextWrapping="Wrap" Text="Ожидание" VerticalAlignment="Top" FontSize="24"/>-->

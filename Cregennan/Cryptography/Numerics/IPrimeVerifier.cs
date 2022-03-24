@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cregennan
+namespace Cregennan.Cryptography.Numerics
 {
-    internal class Cryptography
+    public interface IPrimeVerifier
     {
-
+       bool Test(BigInteger n);
     }
 }
