@@ -50,11 +50,14 @@
     <Compile Include="Cryptography\Numerics\IPrimeVerifier.cs" />
     <Compile Include="Cryptography\Numerics\MillerRabinVerifier.cs" />
     <Compile Include="Cryptography\Numerics\PrimeNumberVerifier.cs" />
+    <Compile Include="Cryptography\Numerics\SoloveySchtrassenVerifier.cs" />
     <Compile Include="Cryptography\Numerics\Utils.cs" />
     <Compile Include="WPF\EventHandlers.cs" />
     <Compile Include="WPF\UI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Cryptography\Algorithms\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

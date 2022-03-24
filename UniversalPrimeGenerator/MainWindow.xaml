@@ -6,10 +6,21 @@
         xmlns:local="clr-namespace:UniversalPrimeGenerator"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
-        Title="Генератор простых чисел" Height="450" Width="800" Background="{x:Null}">
+        Title="Генератор простых чисел" Height="708.429" Width="1207.571" Background="{x:Null}">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="60,58,0,0" TextWrapping="Wrap" Foreground="{DynamicResource SystemBaseHighColorBrush}" Text="Генератор простых чисел" VerticalAlignment="Top" FontSize="24"/>
-        <TextBox x:Name="bits" HorizontalAlignment="Left" Style="{DynamicResource TextBoxRevealStyle}"  Margin="60,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="176"/>
-        <Label Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="Количество бит в числе" HorizontalAlignment="Left" Margin="60,115,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="bits" HorizontalAlignment="Left" Style="{DynamicResource TextBoxRevealStyle}"  Margin="60,238,0,0" Text="" VerticalAlignment="Top" Width="176"/>
+        <Label Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="Количество бит в числе" HorizontalAlignment="Left" Margin="60,212,0,0" VerticalAlignment="Top"/>
+        <ComboBox  x:Name="genAlgorytm" Style="{DynamicResource ComboBoxRevealStyle}" HorizontalAlignment="Left" Margin="60,152,0,0" VerticalAlignment="Top" Width="255"/>
+        <Label   Content="Алгоритм" Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="60,121,0,0" VerticalAlignment="Top"/>
+        <TextBox Style="{DynamicResource TextBoxRevealStyle}" x:Name="Result" HorizontalAlignment="Left" Height="233" Margin="60,391,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="405"/>
+        <Label Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="Результат" HorizontalAlignment="Left" Margin="60,360,0,0" VerticalAlignment="Top"/>
+        <Button Style="{DynamicResource ButtonAccentRevealStyle}"  Content="Сгенерировать" HorizontalAlignment="Left" Margin="60,302,0,0" VerticalAlignment="Top" Width="132" Height="33" Click="Button_Click"/>
+        <TextBlock Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="748,58,0,0" TextWrapping="Wrap" Text="Тест на простоту" VerticalAlignment="Top" FontSize="24"/>
+        <ComboBox  x:Name="checkAlgorytm" Style="{DynamicResource ComboBoxRevealStyle}" HorizontalAlignment="Left" Margin="748,152,0,0" VerticalAlignment="Top" Width="255"/>
+        <Label   Content="Алгоритм" Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="748,121,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Check"  Style="{DynamicResource ButtonAccentRevealStyle}"  Content="Проверить" HorizontalAlignment="Left" Margin="748,302,0,0" VerticalAlignment="Top" Width="132" Height="33" Click="Check_Click"/>
+        <TextBox x:Name="number" HorizontalAlignment="Left" Style="{DynamicResource TextBoxRevealStyle}"  Margin="748,238,0,0" Text="" VerticalAlignment="Top" Width="176"/>
+        <Label Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="Число для проверки" HorizontalAlignment="Left" Margin="748,212,0,0" VerticalAlignment="Top"/>
     </Grid>
 </fw:AcrylicWindow>

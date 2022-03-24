@@ -15,8 +15,8 @@ namespace Cregennan.Cryptography.Numerics
             {
                 throw new ArgumentException("Аргумент должен быть не меньше 2");
             }
-            if (!PrimeNumberVerifier.CheckDefaultWithnesses(n))
-                return false;
+            //if (!PrimeNumberVerifier.CheckDefaultWithnesses(n))
+            //    return false;
             if (PrimeNumberVerifier.IsDefaultWitness(n))
             {
                 return true;

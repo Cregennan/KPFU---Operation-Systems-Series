@@ -15,7 +15,7 @@ namespace UniversalPrimeGenerator
     {
         public App()
         {
-            SourceChord.FluentWPF.ResourceDictionaryEx.GlobalTheme = SourceChord.FluentWPF.ElementTheme.Light;
+            //SourceChord.FluentWPF.ResourceDictionaryEx.GlobalTheme = SourceChord.FluentWPF.ElementTheme.Dark;
         }
     }
 }
