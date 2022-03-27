@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using Cregennan.Core;
 
 namespace Cregennan.Cryptography.Numerics
 {
@@ -22,8 +23,11 @@ namespace Cregennan.Cryptography.Numerics
         public static readonly UInt64 Maximum64 = 0xffffffffffffffff;
         public static readonly UInt32 Minimum32 = 0x80000000;
         public static readonly UInt32 Maximum32 = 0xffffffff;
-        public static readonly int Maximum16 = 0x8000;
-        public static readonly int Minimum16 = 0xffff;
+        public static readonly int Minimum16 = 0x8000;
+        public static readonly int Maximum16 = 0xffff;
+
+
+
 
 
         /// <summary>
@@ -45,6 +49,8 @@ namespace Cregennan.Cryptography.Numerics
                 throw new ArgumentOutOfRangeException("Пределы должны быть положительными");
             }
             
+
+
             BigInteger random;
             byte[] temp = maximum.ToByteArray();
             do
@@ -54,6 +60,13 @@ namespace Cregennan.Cryptography.Numerics
             } while (random < minimum || random > maximum);
             return random;
         }
+
+
+
+
+
+
+
 
         /// <summary>
         /// Получает максимально возможное положительное число с заданной длиной бит
@@ -68,12 +81,14 @@ namespace Cregennan.Cryptography.Numerics
                 throw new ArgumentOutOfRangeException("Длина должна быть положительной");
             }
             BitArray t = new BitArray(length);
+            
             t.SetAll(true);
-            byte[] ret = new byte[(t.Length - 1) / 8 + 1];
-            t.CopyTo(ret, 0);
+            byte[] ret = t.ToBytes().ToArray();
+            
             BigInteger Result = new BigInteger(ret.Concat(new byte[] {0}).ToArray());
             return Result;
         }
+        
         /// <summary>
         /// Получает минимально возможное положительное число с заданной длиной бит
         /// </summary>
@@ -86,11 +101,12 @@ namespace Cregennan.Cryptography.Numerics
             {
                 throw new ArgumentOutOfRangeException("Длина должна быть положительной");
             }
+                
             BitArray t = new BitArray(length);
             t.SetAll(false);
             t.Set(length - 1, true);
-            byte[] ret = new byte[(t.Length - 1) / 8 + 1];
-            t.CopyTo(ret, 0);
+            byte[] ret = t.ToBytes().ToArray();
+
             BigInteger Result = new BigInteger(ret.Concat(new byte[] { 0 }).ToArray());
             return Result;
         }
@@ -103,12 +119,10 @@ namespace Cregennan.Cryptography.Numerics
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         public static BigInteger GetRandomByLength(int length)
         {
+
             return GetRandomInRange(GetMinimumByLength(length), GetMaximumByLength(length));
         }
 
-        //public static BigInteger GetPrimeByLength(int length)
-        //{
-        //}
 
         /// <summary>
         /// Генерирует криптографически стойкое случайное простое число в выбранном диапазоне, с использованием выбранного алгоритма проверки числа на простоту. 
@@ -132,6 +146,27 @@ namespace Cregennan.Cryptography.Numerics
             } while (!res);
             return a;
         }
+
+
+        /// <summary>
+        /// Возвращает случайное взаимно простое  число для данного числа в пределах от min до max
+        /// <param name="number"></param>
+        /// <param name="minimum"></param>
+        /// <param name="maximum"></param>
+        /// <returns></returns>
+        public static BigInteger GetCoprimeInRange(this BigInteger number, BigInteger minimum, BigInteger maximum)
+        {
+            BigInteger a;
+            do
+            {
+                a = GetRandomInRange(minimum, maximum);
+            } while (BigInteger.GreatestCommonDivisor(a, number) != BigInteger.One);
+            return a;
+        }
+
+
+
+
         /// <summary>
         /// Генерирует криптографически стойкое случайное простое число в заданном диапазоне с использованием выбранного алгоритма проверки числа на простоту
         /// </summary>

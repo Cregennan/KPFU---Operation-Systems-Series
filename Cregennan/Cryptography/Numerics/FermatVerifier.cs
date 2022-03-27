@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cregennan.Cryptography.Numerics
 {
@@ -15,8 +11,8 @@ namespace Cregennan.Cryptography.Numerics
             {
                 throw new ArgumentException("Аргумент должен быть не меньше 2");
             }
-            //if (!PrimeNumberVerifier.CheckDefaultWithnesses(n))
-            //    return false;
+            if (!PrimeNumberVerifier.CheckDefaultWithnesses(n))
+                return false;
             if (PrimeNumberVerifier.IsDefaultWitness(n))
             {
                 return true;
@@ -26,7 +22,9 @@ namespace Cregennan.Cryptography.Numerics
             
             for(int i = 0; i < k; i++)
             {
-                BigInteger a = Utils.GetRandomInRange(2, n - 2);
+
+                BigInteger a = n.GetCoprimeInRange(2, n - 2);
+
                 BigInteger t = BigInteger.ModPow(a, n - 1, n);
                 if (t != 1)
                 {

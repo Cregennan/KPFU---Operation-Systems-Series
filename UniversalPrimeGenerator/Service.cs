@@ -10,7 +10,7 @@ namespace UniversalPrimeGenerator
     {
         public static string[] Algorythms =
         {
-            "Тест ферми",
+            "Тест Ферма",
             "Тест Миллера-Рабина",
             "Тест Соловея-Штрассена",
 

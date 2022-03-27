@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -13,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Cregennan.Cryptography.Numerics;
 namespace UniversalPrimeGenerator
 {
     /// <summary>
@@ -26,7 +27,16 @@ namespace UniversalPrimeGenerator
             InitializeComponent();
             bits.PreviewKeyDown += Cregennan.WPF.EventHandlers.Deny_Space;
             bits.PreviewTextInput += Cregennan.WPF.EventHandlers.Uint_PreviewTextInput;
+
+            number.PreviewKeyDown += Cregennan.WPF.EventHandlers.Deny_Space;
+            number.PreviewTextInput += Cregennan.WPF.EventHandlers.Uint_PreviewTextInput;
+
+
             DataObject.AddPastingHandler(bits, Cregennan.WPF.EventHandlers.UInt_Pasting);
+            DataObject.AddPastingHandler(number, Cregennan.WPF.EventHandlers.UInt_Pasting);
+
+
+
             foreach(var s in Service.Algorythms)
             {
                 genAlgorytm.Items.Add(s);
@@ -46,6 +56,8 @@ namespace UniversalPrimeGenerator
                     throw new Exception();
                 }
                 BigInteger number = Cregennan.Cryptography.Numerics.Utils.GetPrimeByLength(bit, Service.VerifierFactory(genAlgorytm.SelectedIndex));
+
+
                 Result.Text = number.ToString();
 
             }catch(Exception ex)
@@ -64,11 +76,31 @@ namespace UniversalPrimeGenerator
                 {
                     throw new Exception();
                 }
+                Stopwatch sw = Stopwatch.StartNew();
                 bool res = Service.VerifierFactory(checkAlgorytm.SelectedIndex).Test(n);
+                sw.Stop();
+                Debug.WriteLine(sw.Elapsed.TotalMilliseconds);
                 MessageBox.Show(this, res ? "Число возможно простое" : "Число составное", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Information);
             }catch(Exception ex)
             {
                 MessageBox.Show(this, "Ошибка в числах", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        public bool state = false;
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            state = !state;
+            if (state)
+            {
+                SourceChord.FluentWPF.ResourceDictionaryEx.GlobalTheme = SourceChord.FluentWPF.ElementTheme.Light;
+                Тема.Content = "Светлая тема";
+            }
+            else
+            {
+                SourceChord.FluentWPF.ResourceDictionaryEx.GlobalTheme = SourceChord.FluentWPF.ElementTheme.Dark;
+                Тема.Content = "Тёмная тема";
             }
         }
     }

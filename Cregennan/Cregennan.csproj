@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Exceptions\PrimalityTestException.cs" />
+    <Compile Include="Core\Extensions.cs" />
     <Compile Include="Cryptography\Numerics\FermatVerifier.cs" />
     <Compile Include="Cryptography\Numerics\IPrimeVerifier.cs" />
     <Compile Include="Cryptography\Numerics\MillerRabinVerifier.cs" />

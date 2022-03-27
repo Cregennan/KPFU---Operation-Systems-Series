@@ -22,5 +22,6 @@
         <Button x:Name="Check"  Style="{DynamicResource ButtonAccentRevealStyle}"  Content="Проверить" HorizontalAlignment="Left" Margin="748,302,0,0" VerticalAlignment="Top" Width="132" Height="33" Click="Check_Click"/>
         <TextBox x:Name="number" HorizontalAlignment="Left" Style="{DynamicResource TextBoxRevealStyle}"  Margin="748,238,0,0" Text="" VerticalAlignment="Top" Width="176"/>
         <Label Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="Число для проверки" HorizontalAlignment="Left" Margin="748,212,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Тема" Content="Тёмная тема" HorizontalAlignment="Left" Margin="1073,584,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="40" Width="90" Style="{DynamicResource ButtonAccentRevealStyle}"/>
     </Grid>
 </fw:AcrylicWindow>

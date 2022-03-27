@@ -15,9 +15,6 @@ namespace Cregennan.Cryptography.Numerics
     {
 
         private const int ComputationsPerTask = 50;
-
-        CancellationTokenSource cancelSignal = new CancellationTokenSource();
-        CancellationToken ct;
         private bool MillerRabinSubRoutine(BigInteger n, int k, int s, BigInteger t)
         {
            
