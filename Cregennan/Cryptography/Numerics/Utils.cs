@@ -1,14 +1,10 @@
-﻿using System;
+﻿using Cregennan.Core;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Security.Cryptography;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using Cregennan.Core;
 
 namespace Cregennan.Cryptography.Numerics
 {
@@ -274,9 +270,9 @@ namespace Cregennan.Cryptography.Numerics
                 while (a % 2 == 0)
                 {
                     a /= 2;
-                    int n_mod_8 = (int)n % 8;
+                    BigInteger n_mod_8 = n % 8;
                     if (n_mod_8 == 3 || n_mod_8 == 5)
-                    {
+                    {   
                         result = -result;
                     }
                 }
@@ -352,5 +348,30 @@ namespace Cregennan.Cryptography.Numerics
             return factors;
         }
 
+        /// <summary>
+        /// Выполняет быстрое возведение положительного числа в положительную степень по модулю
+        /// </summary>
+        /// <param name="a">Число для возведения в степени</param>
+        /// <param name="exponent">Степень</param>
+        /// <param name="modulus">Модуль числа</param>
+        /// <returns></returns>
+        public static BigInteger ModPower(this BigInteger a, BigInteger exponent, BigInteger modulus)
+        {
+            BigInteger Result = 1;
+            BigInteger Bit = a % modulus;
+
+            while (exponent > 0)
+            {
+                if ((exponent & 1) == 1)
+                {
+                    Result *= Bit;
+                    Result %= modulus;
+                }
+                Bit *= Bit;
+                Bit %= modulus;
+                exponent >>= 1;
+            }
+            return Result;       
+        }
     }
 }

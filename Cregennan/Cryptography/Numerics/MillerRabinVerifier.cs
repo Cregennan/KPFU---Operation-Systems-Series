@@ -78,5 +78,16 @@ namespace Cregennan.Cryptography.Numerics
                 return false;
             }
         }
+
+        public override double TestAccuracy(BigInteger n)
+        {
+            var t = Math.Pow(4, -this.DefaultTestRounds(n));
+            if (t < 0.00001)
+            {
+                return 0.999999;
+            }
+
+            return 1 - t;
+        }
     }
 }

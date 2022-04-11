@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caesar Cypher", "Caesar Cyp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vigeneer", "Vigeneer\Vigeneer.csproj", "{DF1417CA-F955-4953-B8C1-A6C389DB95F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cooler Gamma", "CoolerGamma\Cooler Gamma.csproj", "{4C7823DC-A73E-451A-A626-E6B3E5ACE453}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamma", "Gamma\Gamma.csproj", "{84E988D8-4867-4349-85E9-84EF17A19635}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atkin Sieve", "Atkin Sieve\Atkin Sieve.csproj", "{807B785E-70BA-4678-A45D-BD1157147162}"
@@ -19,9 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eratosfen Sieve", "Eratosfe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cregennan", "Cregennan\Cregennan.csproj", "{D6CE9EE3-D0A0-464E-B2B4-91C755DA14C4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CregennanTester", "CregennanTester\CregennanTester.csproj", "{6A9A9E5A-AB7E-4354-BB1D-9ACF970563F0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalPrimeGenerator", "UniversalPrimeGenerator\UniversalPrimeGenerator.csproj", "{577DF9B2-E372-4840-98FE-426471AFF273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CregennanTests", "CregennanTests\CregennanTests.csproj", "{7015097E-1A4D-46EE-8238-9579DF151BE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +35,6 @@ Global
 		{DF1417CA-F955-4953-B8C1-A6C389DB95F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF1417CA-F955-4953-B8C1-A6C389DB95F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF1417CA-F955-4953-B8C1-A6C389DB95F7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4C7823DC-A73E-451A-A626-E6B3E5ACE453}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C7823DC-A73E-451A-A626-E6B3E5ACE453}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C7823DC-A73E-451A-A626-E6B3E5ACE453}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C7823DC-A73E-451A-A626-E6B3E5ACE453}.Release|Any CPU.Build.0 = Release|Any CPU
 		{84E988D8-4867-4349-85E9-84EF17A19635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{84E988D8-4867-4349-85E9-84EF17A19635}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84E988D8-4867-4349-85E9-84EF17A19635}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -61,14 +55,14 @@ Global
 		{D6CE9EE3-D0A0-464E-B2B4-91C755DA14C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6CE9EE3-D0A0-464E-B2B4-91C755DA14C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6CE9EE3-D0A0-464E-B2B4-91C755DA14C4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6A9A9E5A-AB7E-4354-BB1D-9ACF970563F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6A9A9E5A-AB7E-4354-BB1D-9ACF970563F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6A9A9E5A-AB7E-4354-BB1D-9ACF970563F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6A9A9E5A-AB7E-4354-BB1D-9ACF970563F0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{577DF9B2-E372-4840-98FE-426471AFF273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{577DF9B2-E372-4840-98FE-426471AFF273}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{577DF9B2-E372-4840-98FE-426471AFF273}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{577DF9B2-E372-4840-98FE-426471AFF273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7015097E-1A4D-46EE-8238-9579DF151BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7015097E-1A4D-46EE-8238-9579DF151BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7015097E-1A4D-46EE-8238-9579DF151BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7015097E-1A4D-46EE-8238-9579DF151BE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

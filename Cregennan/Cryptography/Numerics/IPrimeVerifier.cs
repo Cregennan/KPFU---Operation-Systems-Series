@@ -10,5 +10,6 @@ namespace Cregennan.Cryptography.Numerics
     public interface IPrimeVerifier
     {
        bool Test(BigInteger n);
+       double TestAccuracy(BigInteger n);
     }
 }

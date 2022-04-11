@@ -13,6 +13,10 @@ namespace Cregennan.Cryptography.Numerics
     {
         public static readonly PrimeNumberVerifier DefaultPrimeVerifier = new MillerRabinVerifier();
 
+        public abstract double TestAccuracy(BigInteger n);
+
+        public readonly bool IsDetermenistic = false;
+
 
         public static readonly int[] DefaultWitnesses = { 2, 3, 5 };
 
@@ -37,7 +41,7 @@ namespace Cregennan.Cryptography.Numerics
             return true;
         }
 
-        protected int DefaultTestRounds (BigInteger n) => n.ToByteArray().Length;
+        protected int DefaultTestRounds(BigInteger n) => (int)BigInteger.Log(n, 2);
 
         protected RandomNumberGenerator generator = RandomNumberGenerator.Create();
         
@@ -47,5 +51,7 @@ namespace Cregennan.Cryptography.Numerics
         /// <param name="n">Число для проверки</param>
         /// <returns>true - число является возможно-простым. false - число составное</returns>
         public abstract bool Test(BigInteger n);
+
+
     }
 }

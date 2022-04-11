@@ -14,28 +14,41 @@ namespace Cregennan.Cryptography.Numerics
         {
             int Rounds = this.DefaultTestRounds(p);
 
+            if (IsDefaultWitness(p))
+            {
+                return true;
+            }
+            if (!CheckDefaultWithnesses(p))
+            {
+                return false;
+            }
+
+
             for (int i = 0; i < Rounds; i++)
             {
                 
                 BigInteger a = Utils.GetRandomInRange(2, p);
-                Debug.WriteLine(a);
-                Debug.WriteLine(p);
+                
                 if (Utils.GCD(a, p) != 1)
                 {
                     return false;
                 }
-                BigInteger j = BigInteger.ModPow(a, (p - 1) >> 2, p);
-                BigInteger J = Utils.JacobiSymbol(a, p);
+                
+                BigInteger j =  a.ModPower((p - 1) >> 1, p);
+                BigInteger J = (Utils.JacobiSymbol(a, p) + p) % p;
+
+
                 if (j != J)
                 {
                     return false;
                 }
-                else
-                {
-                    continue;
-                }
             }
             return true;
+        }
+
+        public override double TestAccuracy(BigInteger n)
+        {
+            return 1 - Math.Pow(2, -this.DefaultTestRounds(n));
         }
     }
 }

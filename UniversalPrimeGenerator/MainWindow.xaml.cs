@@ -22,9 +22,20 @@ namespace UniversalPrimeGenerator
     /// </summary>
     public partial class MainWindow
     {
+
+        AllWindow child;
+        
+
         public MainWindow() 
         {
             InitializeComponent();
+            child = new AllWindow(this);
+            this.Closing += (object sender, System.ComponentModel.CancelEventArgs e) =>
+            {
+                System.Windows.Application.Current.Shutdown();
+            };
+
+
             bits.PreviewKeyDown += Cregennan.WPF.EventHandlers.Deny_Space;
             bits.PreviewTextInput += Cregennan.WPF.EventHandlers.Uint_PreviewTextInput;
 
@@ -77,10 +88,13 @@ namespace UniversalPrimeGenerator
                     throw new Exception();
                 }
                 Stopwatch sw = Stopwatch.StartNew();
-                bool res = Service.VerifierFactory(checkAlgorytm.SelectedIndex).Test(n);
+                var verifier = Service.VerifierFactory(checkAlgorytm.SelectedIndex);
+                bool res = verifier.Test(n);
                 sw.Stop();
                 Debug.WriteLine(sw.Elapsed.TotalMilliseconds);
-                MessageBox.Show(this, res ? "Число возможно простое" : "Число составное", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                result.Text = res ? "Число простое с вероятностью " + verifier.TestAccuracy(n) : "Число составное";
+                result.Text += "\r\n Время проверки: " + sw.Elapsed.TotalMilliseconds + "мс";
             }catch(Exception ex)
             {
                 MessageBox.Show(this, "Ошибка в числах", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -103,5 +117,12 @@ namespace UniversalPrimeGenerator
                 Тема.Content = "Тёмная тема";
             }
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            child.Show();
+            this.Hide();
+        }
+
     }
 }

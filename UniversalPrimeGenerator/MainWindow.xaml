@@ -23,5 +23,7 @@
         <TextBox x:Name="number" HorizontalAlignment="Left" Style="{DynamicResource TextBoxRevealStyle}"  Margin="748,238,0,0" Text="" VerticalAlignment="Top" Width="176"/>
         <Label Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="Число для проверки" HorizontalAlignment="Left" Margin="748,212,0,0" VerticalAlignment="Top"/>
         <Button x:Name="Тема" Content="Тёмная тема" HorizontalAlignment="Left" Margin="1073,584,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="40" Width="90" Style="{DynamicResource ButtonAccentRevealStyle}"/>
+        <TextBlock x:Name="result" HorizontalAlignment="Left" Margin="748,373,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="22" Foreground="White" Width="361" Height="122"/>
+        <Button  Style="{DynamicResource ButtonAccentRevealStyle}" Content="Другое окно" HorizontalAlignment="Left" Margin="928,584,0,0" VerticalAlignment="Top" Width="103" Height="40" Click="Button_Click_2"/>
     </Grid>
 </fw:AcrylicWindow>

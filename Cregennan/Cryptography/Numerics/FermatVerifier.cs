@@ -33,5 +33,10 @@ namespace Cregennan.Cryptography.Numerics
             }
             return true;
         }
+
+        public override double TestAccuracy(BigInteger n)
+        {
+            return 1 - Math.Pow(2, -this.DefaultTestRounds(n));
+        }
     }
 }
