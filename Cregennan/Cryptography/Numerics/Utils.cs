@@ -162,6 +162,26 @@ namespace Cregennan.Cryptography.Numerics
 
 
 
+        /// <summary>
+        /// Расширенный алгоритм Евклида
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static (BigInteger, BigInteger, BigInteger) ExtendedGCD(BigInteger a, BigInteger b)
+        {
+            (var old_r, var r) = (a, b);
+            (var old_s, var s) = (BigInteger.One, BigInteger.Zero);
+            (var old_t, var t) = (BigInteger.Zero, BigInteger.One);
+            while (r != 0)
+            {
+                var quotient = old_r / r;
+                (old_r, r) = (r, old_r - quotient * r);
+                (old_s, s) = (s, old_s - quotient * s);
+                (old_t, t) = (t, old_t - quotient * t); 
+            }
+            return (old_s, old_t, old_r);
+        }
 
         /// <summary>
         /// Генерирует криптографически стойкое случайное простое число в заданном диапазоне с использованием выбранного алгоритма проверки числа на простоту

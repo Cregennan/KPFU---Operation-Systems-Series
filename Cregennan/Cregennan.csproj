@@ -45,8 +45,13 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Definitions.cs" />
+    <Compile Include="Core\Exceptions\RSAInvalidKeyLengthException.cs" />
     <Compile Include="Core\Exceptions\PrimalityTestException.cs" />
+    <Compile Include="Core\Exceptions\RSAInvalidKeyException.cs" />
     <Compile Include="Core\Extensions.cs" />
+    <Compile Include="Cryptography\Algorithms\RSA\RSACryptoService.cs" />
+    <Compile Include="Cryptography\Algorithms\RSA\RSAKey.cs" />
     <Compile Include="Cryptography\Numerics\FermatVerifier.cs" />
     <Compile Include="Cryptography\Numerics\IPrimeVerifier.cs" />
     <Compile Include="Cryptography\Numerics\MillerRabinVerifier.cs" />
@@ -57,8 +62,6 @@
     <Compile Include="WPF\UI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Cryptography\Algorithms\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

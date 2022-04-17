@@ -1,0 +1,40 @@
+﻿<fw:AcrylicWindow x:Class="RSA.TestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RSA"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        mc:Ignorable="d"
+                    Background="{x:Null}"
+        Title="TestWindow" Height="450" Width="800">
+    <Grid>
+        <TextBlock Foreground="{DynamicResource  SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="41,46,0,0" TextWrapping="Wrap" Text="Тест алгоритмов движка" VerticalAlignment="Top" FontSize="30"/>
+        <TextBox x:Name="af" Style="{DynamicResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="41,196,0,0" Text="" VerticalAlignment="Top" Width="56"/>
+        <TextBlock Foreground="{DynamicResource  SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="41,122,0,0" TextWrapping="Wrap" Text="Расширенный алгоритм Евклида" VerticalAlignment="Top" FontSize="18"/>
+        <Label Foreground="{DynamicResource  SystemBaseHighColorBrush}" Content="A" HorizontalAlignment="Left" Margin="41,170,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="bf"  Style="{DynamicResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="121,196,0,0" Text="" VerticalAlignment="Top" Width="56"/>
+        <Label Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="B" HorizontalAlignment="Left" Margin="121,170,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="xf" Style="{DynamicResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="351,196,0,0" Text="" VerticalAlignment="Top" Width="56"/>
+        <Label Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="X" HorizontalAlignment="Left" Margin="351,170,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="yf" Style="{DynamicResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="440,196,0,0" Text="" VerticalAlignment="Top" Width="56"/>
+        <Label Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="Y" HorizontalAlignment="Left" Margin="440,170,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="gcdf" Style="{DynamicResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="526,196,0,0" Text="" VerticalAlignment="Top" Width="56"/>
+        <Label Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="GCD" HorizontalAlignment="Left" Margin="526,170,0,0" VerticalAlignment="Top"/>
+        <TextBlock Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="40,257,0,0" TextWrapping="Wrap" Text="Быстрое возведение в степень" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="base_f" Style="{DynamicResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="41,330,0,0" Text="" VerticalAlignment="Top" Width="56"/>
+        <Label Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="База" HorizontalAlignment="Left" Margin="41,304,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="exp_f" Style="{DynamicResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="129,330,0,0" Text="" VerticalAlignment="Top" Width="56"/>
+        <Label Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="Экспонента" HorizontalAlignment="Left" Margin="129,304,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="mod_f" Style="{DynamicResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="220,330,0,0" Text="" VerticalAlignment="Top" Width="56"/>
+        <Label Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="Модуль" HorizontalAlignment="Left" Margin="220,304,0,0" VerticalAlignment="Top"/>
+        <Button Style="{DynamicResource ButtonRevealStyle}" Content="Го" HorizontalAlignment="Left" Margin="330,325,0,0" VerticalAlignment="Top" Height="38" Width="70" Click="Button_Click_1"/>
+        <TextBox x:Name="res_f" Style="{DynamicResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="448,330,0,0" Text="" VerticalAlignment="Top" Width="56"/>
+        <Label Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="Результат" HorizontalAlignment="Left" Margin="448,304,0,0" VerticalAlignment="Top"/>
+        <Button Style="{DynamicResource ButtonRevealStyle}" Content="Го" HorizontalAlignment="Left" Margin="225,191,0,0" VerticalAlignment="Top" Height="38" Width="70" Click="Button_Click"/>
+
+
+
+
+    </Grid>
+</fw:AcrylicWindow>

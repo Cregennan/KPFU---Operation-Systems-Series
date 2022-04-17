@@ -36,5 +36,30 @@ namespace Cregennan.Core
             if (bitCount < 7)
                 yield return (byte)outByte;
         }
+
+        /// <summary>
+        /// Разбивает строку на подстроки заданного размера
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static IEnumerable<string> Split(this string str, int n)
+        {
+            if (String.IsNullOrEmpty(str) || n < 1)
+            {
+                throw new ArgumentException();
+            }
+
+            for (int i = 0; i < str.Length; i += n)
+            {
+                yield return str.Substring(i, Math.Min(n, str.Length - i));
+            }
+        }
+
+        public static IEnumerable<byte> Indexes(this string s, string alhpabet) => s.Select(y => (byte)alhpabet.IndexOf(y));
+
+        public static IEnumerable<char> FromIndexes(this byte[] a, string alphabet) => a.Select(y => alphabet[y]);
+
     }
 }

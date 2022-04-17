@@ -1,0 +1,32 @@
+﻿<fw:AcrylicWindow x:Class="RSA.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        xmlns:local="clr-namespace:RSA"
+        mc:Ignorable="d"
+        Title="RSA" Height="624" Width="1452" Background="{x:Null}">
+    <Grid>
+        <TextBlock  Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="40,53,0,0" TextWrapping="Wrap" Text="Шифрование  алгоритмом RSA" VerticalAlignment="Top" FontSize="36"/>
+        <TextBox x:Name="publicKey"  Style="{DynamicResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="40,314,0,0" Text="" VerticalAlignment="Top" Width="257"/>
+        <Label Foreground="{DynamicResource SystemBaseHighColorBrush}"  Content="Публичный ключ" HorizontalAlignment="Left" Margin="40,282,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="privateKey"  Style="{DynamicResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="40,408,0,0" Text="" VerticalAlignment="Top" Width="257"/>
+        <Label Foreground="{DynamicResource SystemBaseHighColorBrush}"  Content="Приватный ключ" HorizontalAlignment="Left" Margin="40,378,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="generatePair"  Content="Сгенерировать пару" Style="{DynamicResource ButtonRevealStyle}" HorizontalAlignment="Left" Margin="40,198,0,0" VerticalAlignment="Top" Height="32" Width="151" Click="generatePair_Click"/>
+        <TextBox x:Name="keyLength" Style="{DynamicResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="40,156,0,0" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="Длина ключа" HorizontalAlignment="Left" Margin="40,130,0,0" VerticalAlignment="Top"/>
+        <TextBox AcceptsReturn="True" x:Name="originalText" Style="{DynamicResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="508,224,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="244" Height="141"/>
+        <Label Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="Текст" HorizontalAlignment="Left" Margin="508,193,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="encrypt" Style="{DynamicResource ButtonRevealStyle}" Content="Зашифровать" HorizontalAlignment="Left" Margin="508,395,0,0" VerticalAlignment="Top" Height="29" Width="96" Click="encrypt_Click"/>
+        <TextBox AcceptsReturn="True" x:Name="encryptedText" Style="{DynamicResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="822,224,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="244" Height="141"/>
+        <Label Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="Шифротекст" HorizontalAlignment="Left" Margin="822,193,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="decrypt" Style="{DynamicResource ButtonRevealStyle}" Content="Расшифровать" HorizontalAlignment="Left" Margin="822,395,0,0" VerticalAlignment="Top" Height="29" Width="96" Click="decrypt_Click"/>
+        <TextBox AcceptsReturn="True" x:Name="decryptedText" Style="{DynamicResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="1124,224,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="244" Height="141"/>
+        <Label Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="Расшифрованный текст" HorizontalAlignment="Left" Margin="1124,193,0,0" VerticalAlignment="Top"/>
+        <Button Style="{DynamicResource ButtonRevealStyle}"  Content="Окно тестов" HorizontalAlignment="Left" Margin="1246,544,0,0" VerticalAlignment="Top" Height="38" Width="86" Click="Button_Click"/>
+
+
+
+    </Grid>
+</fw:AcrylicWindow>
