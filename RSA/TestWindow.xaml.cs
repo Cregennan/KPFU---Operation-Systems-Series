@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Cregennan.Core;
+using Cregennan.Cryptography.Numerics;
 
 namespace RSA
 {
@@ -34,11 +37,11 @@ namespace RSA
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var bas = Int32.Parse(base_f.Text);
-            var exp = int.Parse(exp_f.Text);
-            var mod = int.Parse(mod_f.Text);
+            var bas = BigInteger.Parse(base_f.Text);
+            var exp = BigInteger.Parse(exp_f.Text);
+            var mod = BigInteger.Parse(mod_f.Text);
 
-            res_f.Text = System.Numerics.BigInteger.ModPow(bas, exp, mod).ToString();
+            res_f.Text = bas.ModPower(exp, mod).ToString();
         }
     }
 }

@@ -55,7 +55,7 @@ namespace Cregennan.Cryptography.Algorithms.RSA
         {
             (var a, var b) = key.KeyPair;
             BigInteger t = new BigInteger(data);
-            return BigInteger.ModPow(t, b, a).ToByteArray();
+            return Utils.ModPower(t, b, a).ToByteArray();
         }
 
         public static byte[] Encrypt(byte[] message, RSAPublicKey key) => Process(message, key);
