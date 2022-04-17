@@ -10,24 +10,18 @@ using System.Threading.Tasks;
 
 namespace CregennanTests
 {
-    [TestClass]
+    [TestClass()]
     public class RSATests
     {
 
-        [TestMethod]
+        [TestMethod()]
         public void PublicKeyTest()
         {
             var one = BigInteger.Parse("9812798421985211298698362181985412598723798623");
             var two = BigInteger.Parse("91769871958792985798988718287576736178658715");
 
 
-
             RSAPrivateKey key = RSAKey.FromRaw<RSAPrivateKey>(one, two);
-            
-
-
-
-
 
             var str = key.Encode();
             
@@ -44,7 +38,7 @@ namespace CregennanTests
 
         }
 
-        [TestMethod]
+        [TestMethod()]
         public void PrimeGeneratorTest()
         {
             var t = Utils.GetPrimeByLength(10);
@@ -59,7 +53,7 @@ namespace CregennanTests
             Assert.IsTrue(true);
         }
 
-        [TestMethod]
+        [TestMethod()]
         public void ProcessTest()
         {
             byte[] message = { 12, 132, 213, 133, 228, 14, 88 };
