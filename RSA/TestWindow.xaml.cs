@@ -28,12 +28,17 @@ namespace RSA
         {
             var a = Int32.Parse(af.Text);
             var b = Int32.Parse(bf.Text);
-            (var x, var y, var nod)
+            (var x, var y, var nod) = Cregennan.Cryptography.Numerics.Utils.ExtendedGCD(a, b);
+            (xf.Text, yf.Text, gcdf.Text) = (x.ToString(), y.ToString(), nod.ToString());
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            var bas = Int32.Parse(base_f.Text);
+            var exp = int.Parse(exp_f.Text);
+            var mod = int.Parse(mod_f.Text);
 
+            res_f.Text = System.Numerics.BigInteger.ModPow(bas, exp, mod).ToString();
         }
     }
 }

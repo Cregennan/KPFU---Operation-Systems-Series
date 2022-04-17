@@ -8,6 +8,6 @@ namespace Cregennan.Core
 {
     public class Definitions
     {
-        public static readonly String GlobalAlphabet = "~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ \"'.,?!/\\<>$*()-\n\r\t";
+        public static readonly String GlobalAlphabet = "~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ \"'.,?!/\\<>$*()-\n\r\t%=+-";
     }
 }

@@ -85,7 +85,7 @@ namespace RSA
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, "Ошибка в данных" + (ex.Message.Length > 0? "ex.Message" : ""), "Ошибка");
+                MessageBox.Show(this, "Ошибка в данных" + (ex.Message.Length > 0? ": "+ex.Message : ""), "Ошибка");
                 return;
             }
         }
@@ -93,7 +93,7 @@ namespace RSA
         private void decrypt_Click(object sender, RoutedEventArgs e)
         {
             try
-            {
+            { 
                 RSAPrivateKey priv = RSAKey.TryFromEncoded<RSAPrivateKey>(privateKey.Text);
 
                 string[] chunks = !encryptedText.Text.Contains("%") ? new string[] { encryptedText.Text } : encryptedText.Text.Split(new char[] { '%' } );
@@ -120,6 +120,8 @@ namespace RSA
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            TestWindow w = new TestWindow();
+            w.ShowDialog();
 
         }
     }

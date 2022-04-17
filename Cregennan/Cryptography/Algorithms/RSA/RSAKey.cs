@@ -77,7 +77,7 @@ namespace Cregennan.Cryptography.Algorithms.RSA
     }
     public class RSAPrivateKey : RSAKey
     {
-        public override (string, string, string) GetSignature() => ("%FUCKYOULEATHERMAN%", "%TOLDUS%", "%CENTRE%");
+        public override (string, string, string) GetSignature() => ("%OURDADDY%", "%TOLDUS%", "%CENTRE%");
     }
 
 
