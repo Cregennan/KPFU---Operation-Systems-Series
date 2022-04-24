@@ -11,12 +11,24 @@ using System.Threading.Tasks;
 namespace Cregennan.Cryptography.Numerics
 {
 
-    public class MillerRabinVerifier : PrimeNumberVerifier
+    public class ParallelMillerRabinVerifier : PrimeNumberVerifier
     {
-        private bool MillerRabinSubRoutine(BigInteger n, int k, int s, BigInteger t)
+
+        private IEnumerable<int> Rounds(int k)
         {
-            for (int i = 0; i < k; i++)
+            int diff = Environment.ProcessorCount;
+            while(k > 0)
             {
+                var ko = k;
+                k -= diff;
+                yield return ko > diff ? diff : ko;
+            }
+
+        }
+        private bool MillerRabinSubRoutine(BigInteger n, int k, int s, BigInteger t)
+        { 
+            for (int i = 0; i < k; i++)
+            { 
                 BigInteger a = Utils.GetRandomInRange(2, n - 2);
                 BigInteger x = BigInteger.ModPow(a, t, n);
 
@@ -70,7 +82,8 @@ namespace Cregennan.Cryptography.Numerics
             }
             try
             {
-                return MillerRabinSubRoutine(n, k, s, t);
+                var tt = Rounds(k);
+                return tt.AsParallel().Select(x => MillerRabinSubRoutine(n, x, s, t)).All(y => y);
             }
             catch (Exception notprime)
             {

@@ -2,9 +2,11 @@
 using Cregennan.Cryptography.Numerics;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Cregennan.Cryptography.Algorithms.RSA
@@ -24,6 +26,7 @@ namespace Cregennan.Cryptography.Algorithms.RSA
         /// <exception cref="RSAInvalidKeyLengthException"></exception>
         public static (RSAPublicKey, RSAPrivateKey) GenerateKeyPair(int length)
         {
+            Stopwatch st = Stopwatch.StartNew();
             if (length < 10 || length > 512)
             {
                 throw new RSAInvalidKeyLengthException();
@@ -46,7 +49,53 @@ namespace Cregennan.Cryptography.Algorithms.RSA
             (var x, var y, var gcd) = Utils.ExtendedGCD(phi, e);
 
             var d = y < 0 ? y + phi : y;
+            st.Stop();
+            Debug.WriteLine("Время однопоточной генерации: " + st.Elapsed.Milliseconds + "мс");
+            return (RSAKey.FromRaw<RSAPublicKey>(N, e), RSAKey.FromRaw<RSAPrivateKey>(N, d));
+        }
 
+        public static (RSAPublicKey,  RSAPrivateKey) GenerateKeyPairAsync(int length)
+        {
+            Stopwatch st = Stopwatch.StartNew();
+            if (length < 10 || length > 512)
+            {
+                throw new RSAInvalidKeyLengthException();
+            }
+
+            var p = BigInteger.One;
+            var q = BigInteger.One;
+
+
+            var tasks = new Task[]
+            {
+                Task.Factory.StartNew(() =>
+                {
+                    p = Utils.GetPrimeByLength(length);
+                }),
+                Task.Factory.StartNew(() =>
+                {
+                    q = Utils.GetPrimeByLength(length);
+                })
+            };
+
+            Task.WaitAll(tasks);
+
+            var N = p * q;
+
+            var phi = (p - BigInteger.One) * (q - BigInteger.One);
+
+            var e = BigInteger.One;
+
+            while (phi % e == 0)
+            {
+                e = Utils.GetPrimeByLength((2 * length) / 3);
+            }
+
+            (var x, var y, var gcd) = Utils.ExtendedGCD(phi, e);
+
+            var d = y < 0 ? y + phi : y;
+            st.Stop();
+            Debug.WriteLine("Время многопоточной генерации: " + st.Elapsed.Milliseconds + "мс");
             return (RSAKey.FromRaw<RSAPublicKey>(N, e), RSAKey.FromRaw<RSAPrivateKey>(N, d));
         }
 

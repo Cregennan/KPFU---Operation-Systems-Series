@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 
 
@@ -123,6 +124,33 @@ namespace RSA
             TestWindow w = new TestWindow();
             w.ShowDialog();
 
+        }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                (var pub, var priv) = RSACryptoService.GenerateKeyPairAsync(Int32.Parse(keyLength.Text));
+
+                Debug.WriteLine("Данные открытого  ключа:");
+                Debug.WriteLine("\tЧисло N: " + pub.KeyPair.Item1);
+                Debug.WriteLine("\tОткрытая экспонента: " + pub.KeyPair.Item2 + '\n');
+                Debug.WriteLine("Данные закрытого ключа: ");
+                Debug.WriteLine("\tЧисло N: " + priv.KeyPair.Item1);
+                Debug.WriteLine("\tЗакрытая экспонента: " + priv.KeyPair.Item2 + '\n');
+
+                privateKey.Text = priv.Encode();
+                publicKey.Text = pub.Encode();
+            }
+            catch (RSAInvalidKeyLengthException ex)
+            {
+                MessageBox.Show(this, ex.Message, "Ошибка", MessageBoxButton.OK);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Ошибка в данных", "Ошибка", MessageBoxButton.OK);
+                return;
+            }
         }
     }
 }

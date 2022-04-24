@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cregennan.Cryptography.Numerics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace UniversalPrimeGenerator
         {
             "Тест Ферма",
             "Тест Миллера-Рабина",
+            "Параллельный тест Миллера Рабина",
             "Тест Соловея-Штрассена",
 
         };
@@ -23,10 +25,12 @@ namespace UniversalPrimeGenerator
                     return new Cregennan.Cryptography.Numerics.FermatVerifier();
                 case 1:
                     return new Cregennan.Cryptography.Numerics.MillerRabinVerifier();
-                case 2:
+                case 3:
                     return new Cregennan.Cryptography.Numerics.SoloveySchtrassenVerifier();
+                case 2:
+                    return new Cregennan.Cryptography.Numerics.ParallelMillerRabinVerifier();
                 default:
-                    return new Cregennan.Cryptography.Numerics.MillerRabinVerifier();
+                    return PrimeNumberVerifier.DefaultPrimeVerifier();
             }
         }
     }

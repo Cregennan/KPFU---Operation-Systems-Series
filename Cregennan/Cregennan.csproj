@@ -54,9 +54,10 @@
     <Compile Include="Cryptography\Algorithms\RSA\RSAKey.cs" />
     <Compile Include="Cryptography\Numerics\FermatVerifier.cs" />
     <Compile Include="Cryptography\Numerics\IPrimeVerifier.cs" />
-    <Compile Include="Cryptography\Numerics\MillerRabinVerifier.cs" />
+    <Compile Include="Cryptography\Numerics\ParallelMillerRabinVerifier.cs" />
     <Compile Include="Cryptography\Numerics\PrimeNumberVerifier.cs" />
     <Compile Include="Cryptography\Numerics\SoloveySchtrassenVerifier.cs" />
+    <Compile Include="Cryptography\Numerics\MillerRabinVerifier.cs" />
     <Compile Include="Cryptography\Numerics\Utils.cs" />
     <Compile Include="WPF\EventHandlers.cs" />
     <Compile Include="WPF\UI.cs" />

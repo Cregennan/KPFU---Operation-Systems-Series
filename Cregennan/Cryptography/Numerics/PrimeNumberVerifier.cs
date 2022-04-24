@@ -11,7 +11,10 @@ namespace Cregennan.Cryptography.Numerics
 {
     public abstract class PrimeNumberVerifier : IPrimeVerifier
     {
-        public static readonly PrimeNumberVerifier DefaultPrimeVerifier = new MillerRabinVerifier();
+        public static PrimeNumberVerifier DefaultPrimeVerifier()
+        {
+            return new ParallelMillerRabinVerifier();
+        }
 
         public abstract double TestAccuracy(BigInteger n);
 
@@ -41,7 +44,7 @@ namespace Cregennan.Cryptography.Numerics
             return true;
         }
 
-        protected int DefaultTestRounds(BigInteger n) => (int)BigInteger.Log(n, 2);
+        protected int DefaultTestRounds(BigInteger n) => (int)BigInteger.Log(n, 2) + 1;
 
         protected RandomNumberGenerator generator = RandomNumberGenerator.Create();
         

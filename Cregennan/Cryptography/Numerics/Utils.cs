@@ -131,7 +131,7 @@ namespace Cregennan.Cryptography.Numerics
         {
             if (verifier == null)
             {
-                verifier = PrimeNumberVerifier.DefaultPrimeVerifier;
+                verifier = PrimeNumberVerifier.DefaultPrimeVerifier();
             }
             BigInteger a;
             bool res;

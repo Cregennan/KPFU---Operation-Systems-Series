@@ -99,9 +99,9 @@ namespace CregennanTests
             }
         }
 
-
-
         
+
+
         [TestMethod]
         [Description("Тест Символа Якоби")]
         public void JacobiSymbol()
