@@ -129,7 +129,7 @@ namespace RSA
         {
             try
             {
-                (var pub, var priv) = RSACryptoService.GenerateKeyPairAsync(Int32.Parse(keyLength.Text));
+                (var pub, var priv) = RSACryptoService.GenerateKeyPairParallel(Int32.Parse(keyLength.Text));
 
                 Debug.WriteLine("Данные открытого  ключа:");
                 Debug.WriteLine("\tЧисло N: " + pub.KeyPair.Item1);

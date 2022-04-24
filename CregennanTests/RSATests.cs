@@ -1,6 +1,7 @@
 ﻿using Cregennan.Cryptography.Algorithms.RSA;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Cregennan.Cryptography.Numerics;
+using System.Diagnostics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,6 +68,31 @@ namespace CregennanTests
             CollectionAssert.AreEqual(decrypt, message);
         }
 
+        [TestMethod]
+        public void PerformanceTest()
+        {
+            int k = 20;
+
+            double single = 0d;
+            double multi = 0d;
+            for(int i = 0; i < k; i++)
+            {
+                {
+                    Stopwatch ss = Stopwatch.StartNew();
+                    (var pub, var pri) = RSACryptoService.GenerateKeyPair(512);
+                    ss.Stop();
+                    single += ss.Elapsed.TotalMilliseconds;
+                }
+                {
+                    Stopwatch sm = Stopwatch.StartNew();
+                    (var pub, var pri) = RSACryptoService.GenerateKeyPairParallel(512);
+                    sm.Stop();
+                    multi += sm.Elapsed.TotalMilliseconds;
+                }
+            }
+            Debug.WriteLine("Среднее время однопоточной генерации: " + single / k);
+            Debug.WriteLine("Среднее время многопоточной генерации: " + multi / k);
+        }
 
     }
 }

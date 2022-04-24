@@ -26,8 +26,7 @@ namespace Cregennan.Cryptography.Algorithms.RSA
         /// <exception cref="RSAInvalidKeyLengthException"></exception>
         public static (RSAPublicKey, RSAPrivateKey) GenerateKeyPair(int length)
         {
-            Stopwatch st = Stopwatch.StartNew();
-            if (length < 10 || length > 512)
+            if (length < 10 || length > 1024)
             {
                 throw new RSAInvalidKeyLengthException();
             }
@@ -49,15 +48,12 @@ namespace Cregennan.Cryptography.Algorithms.RSA
             (var x, var y, var gcd) = Utils.ExtendedGCD(phi, e);
 
             var d = y < 0 ? y + phi : y;
-            st.Stop();
-            Debug.WriteLine("Время однопоточной генерации: " + st.Elapsed.Milliseconds + "мс");
             return (RSAKey.FromRaw<RSAPublicKey>(N, e), RSAKey.FromRaw<RSAPrivateKey>(N, d));
         }
 
-        public static (RSAPublicKey,  RSAPrivateKey) GenerateKeyPairAsync(int length)
+        public static (RSAPublicKey,  RSAPrivateKey) GenerateKeyPairParallel(int length)
         {
-            Stopwatch st = Stopwatch.StartNew();
-            if (length < 10 || length > 512)
+            if (length < 10 || length > 1024)
             {
                 throw new RSAInvalidKeyLengthException();
             }
@@ -70,10 +66,12 @@ namespace Cregennan.Cryptography.Algorithms.RSA
             {
                 Task.Factory.StartNew(() =>
                 {
+                    Debug.WriteLine("Начался подсчет P");
                     p = Utils.GetPrimeByLength(length);
                 }),
                 Task.Factory.StartNew(() =>
                 {
+                    Debug.WriteLine("Начался подсчет Q");
                     q = Utils.GetPrimeByLength(length);
                 })
             };
@@ -94,8 +92,6 @@ namespace Cregennan.Cryptography.Algorithms.RSA
             (var x, var y, var gcd) = Utils.ExtendedGCD(phi, e);
 
             var d = y < 0 ? y + phi : y;
-            st.Stop();
-            Debug.WriteLine("Время многопоточной генерации: " + st.Elapsed.Milliseconds + "мс");
             return (RSAKey.FromRaw<RSAPublicKey>(N, e), RSAKey.FromRaw<RSAPrivateKey>(N, d));
         }
 
