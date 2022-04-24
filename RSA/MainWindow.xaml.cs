@@ -29,8 +29,10 @@ namespace RSA
         {
             try
             {
+                Stopwatch sw  =  Stopwatch.StartNew();
                 (var pub, var priv) = RSACryptoService.GenerateKeyPair(Int32.Parse(keyLength.Text));
-                
+                sw.Stop();
+                Debug.WriteLine("Время  однопотока:  " + sw.Elapsed.TotalMilliseconds);
                 Debug.WriteLine("Данные открытого  ключа:");
                 Debug.WriteLine("\tЧисло N: " + pub.KeyPair.Item1);
                 Debug.WriteLine("\tОткрытая экспонента: " + pub.KeyPair.Item2  + '\n');
@@ -129,8 +131,10 @@ namespace RSA
         {
             try
             {
+                Stopwatch sw = Stopwatch.StartNew();
                 (var pub, var priv) = RSACryptoService.GenerateKeyPairParallel(Int32.Parse(keyLength.Text));
-
+                sw.Stop();
+                Debug.WriteLine("Время  однопотока:  " + sw.Elapsed.TotalMilliseconds);
                 Debug.WriteLine("Данные открытого  ключа:");
                 Debug.WriteLine("\tЧисло N: " + pub.KeyPair.Item1);
                 Debug.WriteLine("\tОткрытая экспонента: " + pub.KeyPair.Item2 + '\n');
