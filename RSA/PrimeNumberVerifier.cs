@@ -1,5 +1,4 @@
-﻿using Cregennan.Cryptography.Numerics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -7,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cregennan.Cryptography.Numerics
+namespace RSA
 {
     public abstract class PrimeNumberVerifier : IPrimeVerifier
     {

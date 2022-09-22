@@ -24,10 +24,5 @@
         <Button x:Name="decrypt" Style="{DynamicResource ButtonRevealStyle}" Content="Расшифровать" HorizontalAlignment="Left" Margin="822,395,0,0" VerticalAlignment="Top" Height="29" Width="96" Click="decrypt_Click"/>
         <TextBox AcceptsReturn="True" x:Name="decryptedText" Style="{DynamicResource TextBoxRevealStyle}" HorizontalAlignment="Left" Margin="1124,224,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="244" Height="141"/>
         <Label Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="Расшифрованный текст" HorizontalAlignment="Left" Margin="1124,193,0,0" VerticalAlignment="Top"/>
-        <Button Style="{DynamicResource ButtonRevealStyle}"  Content="Окно тестов" HorizontalAlignment="Left" Margin="1246,544,0,0" VerticalAlignment="Top" Height="38" Width="86" Click="Button_Click"/>
-        <Button Style="{DynamicResource ButtonRevealStyle}" Content="Сгенерировать пару асинхронно" HorizontalAlignment="Left" Margin="40,246,0,0" VerticalAlignment="Top" Height="34" Width="223" Click="Button_Click_1"/>
-
-
-
     </Grid>
 </fw:AcrylicWindow>

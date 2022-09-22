@@ -59,9 +59,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="TestWindow.xaml.cs">
-      <DependentUpon>TestWindow.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Definitions.cs" />
+    <Compile Include="EventHandlers.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="IPrimeVerifier.cs" />
+    <Compile Include="ParallelMillerRabinVerifier.cs" />
+    <Compile Include="PrimeNumberVerifier.cs" />
+    <Compile Include="RSAInvalidKeyException.cs" />
+    <Compile Include="RSAInvalidKeyLengthException.cs" />
+    <Compile Include="RSACryptoService.cs" />
+    <Compile Include="RSAKey.cs" />
+    <Compile Include="UI.cs" />
+    <Compile Include="Utils.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,10 +83,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="TestWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -105,12 +110,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Cregennan\Cregennan.csproj">
-      <Project>{d6ce9ee3-d0a0-464e-b2b4-91c755da14c4}</Project>
-      <Name>Cregennan</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

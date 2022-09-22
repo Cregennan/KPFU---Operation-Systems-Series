@@ -1,13 +1,12 @@
-﻿using Cregennan.Core;
-using Cregennan.Core.Exceptions;
-using Cregennan.Cryptography.Algorithms.RSA;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Numerics;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Windows;
-
 
 
 namespace RSA
@@ -20,9 +19,9 @@ namespace RSA
         public MainWindow()
         {
             InitializeComponent();
-            keyLength.PreviewTextInput += Cregennan.WPF.EventHandlers.Uint_PreviewTextInput;
-            DataObject.AddPastingHandler(keyLength, Cregennan.WPF.EventHandlers.UInt_Pasting);
-            keyLength.PreviewKeyDown += Cregennan.WPF.EventHandlers.Deny_Space;
+            keyLength.PreviewTextInput += EventHandlers.Uint_PreviewTextInput;
+            DataObject.AddPastingHandler(keyLength, EventHandlers.UInt_Pasting);
+            keyLength.PreviewKeyDown += EventHandlers.Deny_Space;
         }
 
         private void generatePair_Click(object sender, RoutedEventArgs e)
@@ -30,7 +29,7 @@ namespace RSA
             try
             {
                 Stopwatch sw  =  Stopwatch.StartNew();
-                (var pub, var priv) = RSACryptoService.GenerateKeyPair(Int32.Parse(keyLength.Text));
+                (var pub, var priv) = RSACryptoService.GenerateKeyPair(int.Parse(keyLength.Text));
                 sw.Stop();
                 Debug.WriteLine("Время  однопотока:  " + sw.Elapsed.TotalMilliseconds);
                 Debug.WriteLine("Данные открытого  ключа:");
@@ -74,7 +73,7 @@ namespace RSA
                     keyL = 10;
                 }
 
-                List<byte[]> messages = originalText.Text.Split(keyL / 4).Select(x => x.Indexes(Cregennan.Core.Definitions.GlobalAlphabet).ToArray()).ToList();
+                List<byte[]> messages = originalText.Text.Split(keyL / 4).Select(x => x.Indexes(Definitions.GlobalAlphabet).ToArray()).ToList();
 
                 string[] encryptedChunks = messages.Select(x => RSACryptoService.Encrypt(x, pub)).Select(x => Convert.ToBase64String(x)).ToArray();  
 
@@ -105,7 +104,7 @@ namespace RSA
 
                 IEnumerable<byte[]> decrypted = crypted.Select(x => RSACryptoService.Decrypt(x, priv).ToArray());
 
-                IEnumerable<string> textchunks = decrypted.Select(x => new string(x.FromIndexes(Cregennan.Core.Definitions.GlobalAlphabet).ToArray()));
+                IEnumerable<string> textchunks = decrypted.Select(x => new string(x.FromIndexes(Definitions.GlobalAlphabet).ToArray()));
 
                 decryptedText.Text = String.Join(String.Empty, textchunks);
             }
@@ -132,7 +131,7 @@ namespace RSA
             try
             {
                 Stopwatch sw = Stopwatch.StartNew();
-                (var pub, var priv) = RSACryptoService.GenerateKeyPairParallel(Int32.Parse(keyLength.Text));
+                (var pub, var priv) = RSACryptoService.GenerateKeyPairParallel(int.Parse(keyLength.Text));
                 sw.Stop();
                 Debug.WriteLine("Время  однопотока:  " + sw.Elapsed.TotalMilliseconds);
                 Debug.WriteLine("Данные открытого  ключа:");
@@ -156,5 +155,6 @@ namespace RSA
                 return;
             }
         }
+
     }
 }
