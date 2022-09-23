@@ -8,7 +8,7 @@
 
 Содержание:
 
-- ### [Cregennan](https://github.com/Cregennan/KPFU---Operation-Systems-Series/tree/master/RSA) - Библиотека, содержащая все что используется в работе.<br/>
+- ### [Cregennan](https://github.com/Cregennan/KPFU---Operation-Systems-Series/tree/master/Cregennan) - Библиотека, содержащая все что используется в работе.<br/>
 - [RSA](https://github.com/Cregennan/KPFU---Operation-Systems-Series/tree/master/RSA) - Реализация RSA<br/>
 - [Vigeneer](https://github.com/Cregennan/KPFU---Operation-Systems-Series/tree/master/Vigeneer) - Шифр Виженера<br/>
 - [Miller Rabin Test](https://github.com/Cregennan/KPFU---Operation-Systems-Series/tree/master/Miller-Rabin%20Test) - Тест Миллера Рабина<br/>
